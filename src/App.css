@@ -1,0 +1,17 @@
+.booking--container {
+  margin: 50px 75px;
+}
+.mui-grid {
+  padding-top: 20px;
+}
+.mui-grid--booking-form {
+  background: #f5f5f5;
+  padding: 20px 0;
+}
+.mui-grid--price-quote {
+  background: yellowgreen;
+}
+
+.stepper {
+  margin: 20px 0;
+}
