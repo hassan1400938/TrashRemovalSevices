@@ -5,14 +5,14 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 
 import ChooseAService from "./ChooseAService";
 import DateTime from "./DateTime";
-
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
+import { Typography } from "@mui/material";
+import { IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import { Button } from "@mui/material";
 
 export default function ControlledAccordions(props) {
   const order = props.data.price_quote;
+  console.log(order);
 
   const [expanded, setExpanded] = React.useState("panel-services");
 
@@ -39,7 +39,7 @@ export default function ControlledAccordions(props) {
             What are you looking for?
           </Typography>
           <Typography variant="subtitle1" sx={{ color: "text.secondary" }}>
-            {order.service}
+            Service Name
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
