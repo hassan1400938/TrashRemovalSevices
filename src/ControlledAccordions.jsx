@@ -5,6 +5,8 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 
 import ChooseAService from "./ChooseAService";
 import DateTime from "./PickUpDateTime";
+import TaskDescription from "./TaskDescription";
+
 import { Typography } from "@mui/material";
 import { IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
@@ -87,7 +89,7 @@ export default function ControlledAccordions(props) {
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
-          <Typography sx={{ width: "33%", flexShrink: 0 }}>
+          <Typography variant="h6" sx={{ width: "33%", flexShrink: 0 }}>
             Task Description
           </Typography>
           <Typography sx={{ color: "text.secondary" }}>
@@ -95,10 +97,7 @@ export default function ControlledAccordions(props) {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer
-            sit amet egestas eros, vitae egestas augue. Duis vel est augue.
-          </Typography>
+          <TaskDescription />
         </AccordionDetails>
       </Accordion>
       <Accordion
@@ -114,7 +113,7 @@ export default function ControlledAccordions(props) {
           aria-controls="panel4bh-content"
           id="panel4bh-header"
         >
-          <Typography sx={{ width: "33%", flexShrink: 0 }}>
+          <Typography variant="h6" sx={{ width: "33%", flexShrink: 0 }}>
             Frequency
           </Typography>
           <Typography sx={{ color: "text.secondary" }}>
@@ -141,7 +140,7 @@ export default function ControlledAccordions(props) {
           aria-controls="panel4bh-content"
           id="panel4bh-header"
         >
-          <Typography sx={{ width: "33%", flexShrink: 0 }}>
+          <Typography variant="h6" sx={{ width: "33%", flexShrink: 0 }}>
             Review your order
           </Typography>
           <Typography sx={{ color: "text.secondary" }}>
@@ -161,7 +160,7 @@ export default function ControlledAccordions(props) {
         disabled
       >
         <AccordionSummary aria-controls="panel4bh-content" id="panel4bh-header">
-          <Typography sx={{ width: "33%", flexShrink: 0 }}>Payment</Typography>
+          <Typography variant="h6" sx={{ width: "33%", flexShrink: 0 }}>Payment</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
