@@ -2,7 +2,18 @@ export default {
   success: true,
   data: {
     services: ["Waste Removal", "Cardboard Removal", "Dumpster Rental"],
-    additional_items: ["Ac Window Unit", "Area Rug (<=6'x9')"],
+    additional_items: [
+      { item_id: 1, item: "Ac Window Unit", price_each: 22.0 },
+      { itme_id: 2, item: "Area Rug (<=6'x9')", price: 22.0 },
+      { item_id: 3, item: "Area Rug (> 6'x9')", price: 38.0 },
+      { itme_id: 4, item: "Couch (4 Seater)", price: 55.0 },
+      { item_id: 5, item: "Futon", price_each: 44.0 },
+      { itme_id: 6, item: "Ottoman", price: 16.5 },
+      { item_id: 7, item: "Trash Bin (35 Gallons)", price: 33.0 },
+      { itme_id: 8, item: "Yard Debris (per cubic yard)", price: 55.0 },
+      { item_id: 9, item: "Bagster (Small)", price: 110.0 },
+      { itme_id: 10, item: "Fridge (Mini - Must be empty)", price: 22.0 },
+    ],
     vehicles: ["Pick-Up Truck", "Truck"],
     locations: ["92028", "9202"],
     prices_by_location: [

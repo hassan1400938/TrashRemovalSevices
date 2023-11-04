@@ -1,5 +1,5 @@
 import React from "react";
-import BookingForm from "./BookingForm";
+import BookingForm from "./assets/BookingForm";
 
 import Grid from "@mui/material/Grid";
 export default function Booking() {

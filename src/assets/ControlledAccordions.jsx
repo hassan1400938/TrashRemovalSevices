@@ -1,16 +1,20 @@
 import * as React from "react";
-import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
 
 import ChooseAService from "./ChooseAService";
 import DateTime from "./PickUpDateTime";
 import TaskDescription from "./TaskDescription";
+import Frequency from "./Frequency";
+import ReviewOrderAddress from "./ReviewOrderAddress";
 
-import { Typography } from "@mui/material";
-import { IconButton } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Typography,
+  IconButton,
+  Button,
+} from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
-import { Button } from "@mui/material";
 
 export default function ControlledAccordions(props) {
   const order = props.data.price_quote;
@@ -121,10 +125,7 @@ export default function ControlledAccordions(props) {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer
-            sit amet egestas eros, vitae egestas augue. Duis vel est augue.
-          </Typography>
+          <Frequency />
         </AccordionDetails>
       </Accordion>
       <Accordion
@@ -148,10 +149,7 @@ export default function ControlledAccordions(props) {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer
-            sit amet egestas eros, vitae egestas augue. Duis vel est augue.
-          </Typography>
+          <ReviewOrderAddress />
         </AccordionDetails>
       </Accordion>
       <Accordion
@@ -160,7 +158,9 @@ export default function ControlledAccordions(props) {
         disabled
       >
         <AccordionSummary aria-controls="panel4bh-content" id="panel4bh-header">
-          <Typography variant="h6" sx={{ width: "33%", flexShrink: 0 }}>Payment</Typography>
+          <Typography variant="h6" sx={{ width: "33%", flexShrink: 0 }}>
+            Payment
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>

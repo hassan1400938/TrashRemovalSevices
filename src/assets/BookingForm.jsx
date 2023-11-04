@@ -1,7 +1,7 @@
 import React from "react";
-import BookingStepper from "./BookingStepper";
-import ControlledAccordions from "./ControlledAccordions";
-import formData from "./formData.js";
+import BookingStepper from "./BookingStepper.jsx";
+import ControlledAccordions from "./ControlledAccordions.jsx";
+import formData from "../formData.js";
 export default function BookingForm() {
   console.log(formData);
   return (
