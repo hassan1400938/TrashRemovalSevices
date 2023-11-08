@@ -3,7 +3,6 @@ import BookingStepper from "./BookingStepper.jsx";
 import ControlledAccordions from "./ControlledAccordions.jsx";
 import formData from "../formData.js";
 export default function BookingForm() {
-  console.log(formData);
   return (
     <div className="booking-form">
       <BookingStepper />

@@ -7,11 +7,18 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Textarea from "@mui/joy/Textarea";
 
-export default function TaskDescription() {
+import AddItemDialog from "./AddItemDialog";
+
+export default function TaskDescription(props) {
+  const additionalItems = props.data.additional_items;
+  // const addItemDialog = additionalItems.map(function (item, index) {
+  //   return <AddItemDialog key={item.item_id} {...item} />;
+  // });
+
+  function addItem() {}
   return (
     <Box>
       <Box>
@@ -34,9 +41,7 @@ export default function TaskDescription() {
         <Typography variant="body2" mt={2}>
           Your provider will only collects items you have added here.
         </Typography>
-        <Button variant="outlined" endIcon={<AddCircleIcon />}>
-          Add Item
-        </Button>
+        <AddItemDialog {...additionalItems} />
       </Box>
       <Box>
         <Typography variant="body1" mt={2}>
@@ -73,7 +78,6 @@ export default function TaskDescription() {
             Does the provider need to climb stairs?
           </Typography>
           <RadioGroup
-            row
             aria-labelledby="is-stairs-buttons-group"
             name="stairs-radio-buttons-group"
           >
@@ -87,7 +91,6 @@ export default function TaskDescription() {
             Does one of your items require dismantling?
           </Typography>
           <RadioGroup
-            row
             aria-labelledby="is-stairs-buttons-group"
             name="stairs-radio-buttons-group"
           >
@@ -106,14 +109,14 @@ Note: Items you wish to be removed must be itemized and added to the dropdown li
           />
         </Box>
         <Typography variant="body1">Coupon Code</Typography>
-        <Box row>
+        <Box row="true">
           <TextField
             id="outlined-basic"
             label="Enter a promo code"
             variant="outlined"
             placeholder="Enter a promo code"
           />
-          <Button variant="outlined" size="large" disabled="true">
+          <Button variant="outlined" size="large">
             Enter
           </Button>
         </Box>

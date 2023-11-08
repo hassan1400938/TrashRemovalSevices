@@ -15,7 +15,7 @@ export default function ReviewOrderAddress() {
   return (
     <Box>
       <Typography variant="body1">Enter your address</Typography>
-      <Box row>
+      <Box row="true">
         <Button variant="outlined" startIcon={<HomeIcon />}>
           Residential
         </Button>

@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import ChooseAService from "./ChooseAService";
-import DateTime from "./PickUpDateTime";
-import TaskDescription from "./TaskDescription";
-import Frequency from "./Frequency";
-import ReviewOrderAddress from "./ReviewOrderAddress";
+import ChooseAService from "./accordion-components/ChooseAService";
+import DateTime from "./accordion-components/PickUpDateTime";
+import TaskDescription from "./accordion-components/TaskDescription";
+import Frequency from "./accordion-components/Frequency";
+import ReviewOrderAddress from "./accordion-components/ReviewOrderAddress";
 
 import {
   Accordion,
@@ -17,9 +17,6 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 
 export default function ControlledAccordions(props) {
-  const order = props.data.price_quote;
-  console.log(order);
-
   const [expanded, setExpanded] = React.useState("panel-services");
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -51,7 +48,7 @@ export default function ControlledAccordions(props) {
         <AccordionDetails>
           {/* choose a service form inputs */}
           <ChooseAService />
-          <Button variant="contained" size="large" justify-content>
+          <Button variant="contained" size="large">
             Continue
           </Button>
         </AccordionDetails>
@@ -101,7 +98,7 @@ export default function ControlledAccordions(props) {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <TaskDescription />
+          <TaskDescription {...props} />
         </AccordionDetails>
       </Accordion>
       <Accordion

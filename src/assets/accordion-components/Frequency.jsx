@@ -25,7 +25,6 @@ export default function Frequency() {
         booking is worth more than $95.00. Terms apply
       </Typography>
       <RadioGroup
-        row
         aria-labelledby="frequency-buttons-group"
         name="frequency-radio-buttons-group"
       >
