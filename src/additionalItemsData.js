@@ -1,7 +1,6 @@
 export default {
   success: true,
   data: {
-    services: ["Waste Removal", "Cardboard Removal", "Dumpster Rental"],
     additional_items: [
       { item_id: 1, item_name: "Ac Window Unit", price_each: 22.0 },
       { itme_id: 2, item_name: "Area Rug (<=6'x9')", price: 22.0 },
@@ -14,24 +13,38 @@ export default {
       { item_id: 9, item_name: "Bagster (Small)", price: 110.0 },
       { itme_id: 10, item_name: "Fridge (Mini - Must be empty)", price: 22.0 },
     ],
-    vehicles: ["Pick-Up Truck", "Truck"],
-    locations: ["92028", "9202"],
-    prices_by_location: [
+    services_by_location: [
       {
         zip_code: 92028,
-        prices: {
-          waste_removal: 80,
-          cardboard_removal: 90,
-          dumpster_rental: 110,
-        },
+        services: [
+          {
+            name: "Waste Removal",
+            price: 80,
+          },
+          {
+            name: "Cardboard Removal",
+            price: 90,
+          },
+          {
+            name: "Dumpster rental",
+            price: 110,
+          },
+        ],
+        vehicles: ["Pick-Up Truck", "Truck"],
       },
       {
         zip_code: 9202,
-        prices: {
-          waste_removal: 80,
-          cardboard_removal: 90,
-          dumpster_rental: 110,
-        },
+        services: [
+          {
+            name: "Waste Removal",
+            price: 80,
+          },
+          {
+            name: "Cardboard Removal",
+            price: 90,
+          },
+        ],
+        vehicles: ["Pick-Up Truck", "Truck"],
       },
     ],
     price_quote: [
