@@ -1,10 +1,7 @@
 import React from "react";
-import { Box } from "@mui/material";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
+import { Box, Stepper, Step, StepLabel } from "@mui/material";
 
-export default function BookingStepper() {
+export default function BookingStepper({ expanded }) {
   const steps = [
     "Pick a Service",
     "Date and Time",
@@ -13,10 +10,28 @@ export default function BookingStepper() {
     "Review Your Order",
     "Payment",
   ];
-
+  // Determine the active step based on the expanded accordion
+  const getActiveStep = () => {
+    switch (expanded) {
+      case "panel-services":
+        return 0;
+      case "panel-date_time":
+        return 1;
+      case "panel-tasks":
+        return 2;
+      case "panel-frequency":
+        return 3;
+      case "panel-review-order":
+        return 4;
+      case "panel-payment":
+        return 5;
+      default:
+        return 0;
+    }
+  };
   return (
     <Box sx={{ width: "100%" }} className="stepper">
-      <Stepper activeStep={1} alternativeLabel>
+      <Stepper activeStep={getActiveStep()} alternativeLabel>
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>

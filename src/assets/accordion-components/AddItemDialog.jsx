@@ -21,7 +21,7 @@ const emails = ["username@gmail.com", "user02@gmail.com"];
 function SimpleDialog(props) {
   const { onClose, selectedValue, open, items } = props;
   let dataKeys = Object.keys(items);
-  console.log(dataKeys);
+  // console.log(dataKeys);
   const handleClose = () => {
     onClose(selectedValue);
   };

@@ -12,8 +12,8 @@ import Textarea from "@mui/joy/Textarea";
 
 import AddItemDialog from "./AddItemDialog";
 
-export default function TaskDescription(props) {
-  const additionalItems = props.data.additional_items;
+export default function TaskDescription({ formData, updateFormData }) {
+  const additionalItems = formData.data.additional_items;
   // const addItemDialog = additionalItems.map(function (item, index) {
   //   return <AddItemDialog key={item.item_id} {...item} />;
   // });

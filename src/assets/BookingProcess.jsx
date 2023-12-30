@@ -1,30 +1,34 @@
 import * as React from "react";
-
 import ChooseAService from "./accordion-components/ChooseAService";
 import DateTime from "./accordion-components/PickUpDateTime";
 import TaskDescription from "./accordion-components/TaskDescription";
 import Frequency from "./accordion-components/Frequency";
 import ReviewOrderAddress from "./accordion-components/ReviewOrderAddress";
-
+import BookingStepper from "./BookingStepper";
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   Typography,
   IconButton,
-  Button,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+// import { ReplyRounded } from "@mui/icons-material";
 
-export default function ControlledAccordions(props) {
+export default function BookingProcess({ formData, updateFormData }) {
   const [expanded, setExpanded] = React.useState("panel-services");
-
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
   return (
     <div>
+      {/* Pass the expanded state to BookingStepper */}
+      <BookingStepper expanded={expanded} />
+      <h2 className="form--service-title">
+        {formData.data.price_quote.basic_services.service}
+      </h2>
+      {/* A#1 Pick a Service Accordion*/}
       <Accordion
         expanded={expanded === "panel-services"}
         onChange={handleChange("panel-services")}
@@ -42,17 +46,15 @@ export default function ControlledAccordions(props) {
             What are you looking for?
           </Typography>
           <Typography variant="subtitle1" sx={{ color: "text.secondary" }}>
-            Service Name
+            {formData.data.price_quote.basic_services.service}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          {/* choose a service form inputs */}
-          <ChooseAService />
-          <Button variant="contained" size="large">
-            Continue
-          </Button>
+          <ChooseAService formData={formData} updateFormData={updateFormData} />
         </AccordionDetails>
       </Accordion>
+
+      {/* A#2 Date and Time Accordion*/}
       <Accordion
         expanded={expanded === "panel-date_time"}
         onChange={handleChange("panel-date_time")}
@@ -70,13 +72,16 @@ export default function ControlledAccordions(props) {
             Date & Time
           </Typography>
           <Typography sx={{ color: "text.secondary" }}>
-            Pickup: 9-10-1212 11:30 AM
+            Pickup: {formData.data.price_quote.date_time.pickup_date}{" "}
+            {formData.data.price_quote.date_time.pickup_time}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <DateTime />
+          <DateTime formData={formData} updateFormData={updateFormData} />
         </AccordionDetails>
       </Accordion>
+
+      {/* A#3 Tasks accordion */}
       <Accordion
         expanded={expanded === "panel-tasks"}
         onChange={handleChange("panel-tasks")}
@@ -98,9 +103,14 @@ export default function ControlledAccordions(props) {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <TaskDescription {...props} />
+          <TaskDescription
+            formData={formData}
+            updateFormData={updateFormData}
+          />
         </AccordionDetails>
       </Accordion>
+
+      {/* A#4 Frequency Accordion */}
       <Accordion
         expanded={expanded === "panel-frequency"}
         onChange={handleChange("panel-frequency")}
@@ -125,6 +135,8 @@ export default function ControlledAccordions(props) {
           <Frequency />
         </AccordionDetails>
       </Accordion>
+
+      {/* A#5 Review Order accordion */}
       <Accordion
         expanded={expanded === "panel-review-order"}
         onChange={handleChange("panel-review-order")}
@@ -135,8 +147,8 @@ export default function ControlledAccordions(props) {
               <EditIcon fontSize="medium" />
             </IconButton>
           }
-          aria-controls="panel4bh-content"
-          id="panel4bh-header"
+          aria-controls="panel5bh-content"
+          id="panel5bh-header"
         >
           <Typography variant="h6" sx={{ width: "33%", flexShrink: 0 }}>
             Review your order
@@ -149,12 +161,14 @@ export default function ControlledAccordions(props) {
           <ReviewOrderAddress />
         </AccordionDetails>
       </Accordion>
+
+      {/* A#6 Payment Accordion */}
       <Accordion
         expanded={expanded === "panel-payment"}
         onChange={handleChange("panel-payment")}
         disabled
       >
-        <AccordionSummary aria-controls="panel4bh-content" id="panel4bh-header">
+        <AccordionSummary aria-controls="panel6bh-content" id="panel6bh-header">
           <Typography variant="h6" sx={{ width: "33%", flexShrink: 0 }}>
             Payment
           </Typography>

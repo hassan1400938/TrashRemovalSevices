@@ -18,8 +18,10 @@
     "@mui/material": "^5.14.11",
     "@mui/x-date-pickers": "^6.17.0",
     "date-fns": "^2.30.0",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-places-autocomplete": "^7.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

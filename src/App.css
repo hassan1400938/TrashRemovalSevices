@@ -5,11 +5,8 @@
   padding-top: 20px;
 }
 .mui-grid--booking-form {
-  background: #f5f5f5;
+  /* background: #f5f5f5; */
   padding: 20px;
-}
-.mui-grid--price-quote {
-  background: yellowgreen;
 }
 
 .stepper {
