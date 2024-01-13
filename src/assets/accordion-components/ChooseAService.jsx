@@ -1,10 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Box, Typography, Button, TextField } from "@mui/material";
 
-export default React.memo(function ChooseAService({
-  formData,
-  updateFormData,
-}) {
+export default function ChooseAService({ formData, updateFormData }) {
   const [userPostalCode, setUserPostalCode] = React.useState("");
   const [serviceAvailability, setServiceAvailability] = React.useState(
     "Check if we serve in your area."
@@ -22,14 +19,9 @@ export default React.memo(function ChooseAService({
       // : "Hit CONTINUE to verify."
     );
   };
-  React.useEffect(() => {
-    // console.log("User postal Code " + userPostalCode);
-    // console.log("service Availability " + serviceAvailability);
-  }, [userPostalCode, serviceAvailability]);
 
   //When user hit continue button for ZIP code verification
   function handlePostalCodeVerification() {
-    console.log("handlePostalCodeVerification called");
     const isServiceAvailable = formData.data.services_by_location.some(
       (location) => location.zip_code === parseInt(userPostalCode, 10)
     );
@@ -40,54 +32,32 @@ export default React.memo(function ChooseAService({
         : "We do not serve in your area"
     );
 
-    // Update the 'postal_code' value in price_quote
-    const newData = {
-      ...formData,
-      data: {
-        ...formData.data,
-        price_quote: {
-          ...formData.data.price_quote,
-          postal_code: userPostalCode,
+    if (isServiceAvailable) {
+      // Update the 'postal_code' value in price_quote
+      const updatedFormData = {
+        ...formData,
+        data: {
+          ...formData.data,
+          price_quote: {
+            ...formData.data.price_quote,
+            postal_code: userPostalCode,
+          },
         },
-      },
-    };
-    // Call the callback function to update the data in the parent
-    updateFormData(newData);
-    console.log(formData);
+      };
+      // Call the callback function to update the data in the parent
+      updateFormData(updatedFormData);
+    }
   }
 
   //////////////////////////////////////////
 
-  // const renderButtons = () => {
-  //   // if (
-  //   //   serviceAvailability.includes("do not serve") ||
-  //   //   serviceAvailability.includes("if we serve")
-  //   // ) {
-  //   return formData.data.basic_services.map((item) => (
-  //     <Button
-  //       variant="outlined"
-  //       size="large"
-  //       key={item.service_name}
-  //       onClick={() => handleButtonClick(item.service_name, item.base_price)}
-  //     >
-  //       {item.service_name}
-  //       <Typography>${item.base_price}</Typography>
-  //     </Button>
-  //   ));
-  //   // } else {
-  //   //   return null;
-  //   // }
-  // };
-  //////////////////
-  // Conditionally render buttons based on postal code verification
-
-  const renderButtons = formData.data.basic_services.map((item) => {
+  const renderButtons = () => {
     if (
       serviceAvailability.includes("do not serve") ||
       // serviceAvailability.includes("CONTINUE") ||
       serviceAvailability.includes("if we serve")
     ) {
-      return (
+      return formData.data.basic_services.map((item) => (
         <Button
           variant="outlined"
           size="large"
@@ -97,7 +67,7 @@ export default React.memo(function ChooseAService({
           {item.service_name}
           <Typography>${item.base_price}</Typography>
         </Button>
-      );
+      ));
     } else if (
       userPostalCode.trim() !== "" &&
       serviceAvailability.includes("available")
@@ -106,6 +76,7 @@ export default React.memo(function ChooseAService({
         (location) => location.zip_code === parseInt(userPostalCode, 10)
       );
       if (servicesInLocation) {
+        //render buttons
         return servicesInLocation.services.map((service) => (
           <Button
             variant="outlined"
@@ -118,11 +89,12 @@ export default React.memo(function ChooseAService({
           </Button>
         ));
       } else null;
+    } else {
+      return [];
     }
-  });
+  };
 
   const handleButtonClick = (serviceName, servicePrice) => {
-    console.log(servicePrice);
     const newData = {
       ...formData,
       data: {
@@ -145,7 +117,7 @@ export default React.memo(function ChooseAService({
       <Typography variant="body2" mt={2}>
         What do you need?
       </Typography>
-      {renderButtons}
+      {renderButtons()}
       <Typography
         variant="body2"
         mt={2}
@@ -180,4 +152,4 @@ export default React.memo(function ChooseAService({
       </Button>
     </Box>
   );
-});
+}

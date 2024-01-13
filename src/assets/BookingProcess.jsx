@@ -15,12 +15,15 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 // import { ReplyRounded } from "@mui/icons-material";
 
-export default function BookingProcess({ formData, updateFormData }) {
+export default function BookingProcess({
+  formData,
+  updateFormData,
+}) {
+  // console.log("BookingProcess Component Rendered");
   const [expanded, setExpanded] = React.useState("panel-services");
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
-
   return (
     <div>
       {/* Pass the expanded state to BookingStepper */}
@@ -58,6 +61,10 @@ export default function BookingProcess({ formData, updateFormData }) {
       <Accordion
         expanded={expanded === "panel-date_time"}
         onChange={handleChange("panel-date_time")}
+        // disabled={
+        //   expanded !== "panel-services" ||
+        //   formData.data.price_quote.postal_code === ""
+        // }
       >
         <AccordionSummary
           expandIcon={
@@ -72,7 +79,7 @@ export default function BookingProcess({ formData, updateFormData }) {
             Date & Time
           </Typography>
           <Typography sx={{ color: "text.secondary" }}>
-            Pickup: {formData.data.price_quote.date_time.pickup_date}{" "}
+            {formData.data.price_quote.date_time.pickup_date}{" "}
             {formData.data.price_quote.date_time.pickup_time}
           </Typography>
         </AccordionSummary>
@@ -85,6 +92,7 @@ export default function BookingProcess({ formData, updateFormData }) {
       <Accordion
         expanded={expanded === "panel-tasks"}
         onChange={handleChange("panel-tasks")}
+        // disabled={expanded !== "panel-date_time"}
       >
         <AccordionSummary
           expandIcon={
@@ -99,7 +107,10 @@ export default function BookingProcess({ formData, updateFormData }) {
             Task Description
           </Typography>
           <Typography sx={{ color: "text.secondary" }}>
-            Truck, 1 item selected, No Coupon code
+            {formData.data.price_quote.basic_services.vehicle_name}
+            {/* {", "}{" "} */}
+            {/* {formData.data.price_quote.tasks.addittional_items.length} item selected */}
+            {/* No Coupon code */}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -110,10 +121,11 @@ export default function BookingProcess({ formData, updateFormData }) {
         </AccordionDetails>
       </Accordion>
 
-      {/* A#4 Frequency Accordion */}
+      {/* A#4 Frequency Accordion
       <Accordion
         expanded={expanded === "panel-frequency"}
         onChange={handleChange("panel-frequency")}
+        disabled={expanded !== "panel-tasks"}
       >
         <AccordionSummary
           expandIcon={
@@ -134,12 +146,13 @@ export default function BookingProcess({ formData, updateFormData }) {
         <AccordionDetails>
           <Frequency />
         </AccordionDetails>
-      </Accordion>
+      </Accordion> */}
 
       {/* A#5 Review Order accordion */}
       <Accordion
         expanded={expanded === "panel-review-order"}
         onChange={handleChange("panel-review-order")}
+        // disabled={expanded !== "panel-tasks"}
       >
         <AccordionSummary
           expandIcon={
@@ -154,11 +167,20 @@ export default function BookingProcess({ formData, updateFormData }) {
             Review your order
           </Typography>
           <Typography sx={{ color: "text.secondary" }}>
-            Address will be here
+            {formData.data.price_quote.postal_code}
+            {formData.data.price_quote.address.company_name !== "" &&
+              `, ${formData.data.price_quote.address.company_name}`}
+            {formData.data.price_quote.address.pickup_address !== "" &&
+              `, ${formData.data.price_quote.address.pickup_address}`}
+            {formData.data.price_quote.address.apt_number !== "" &&
+              `, ${formData.data.price_quote.address.apt_number}`}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <ReviewOrderAddress />
+          <ReviewOrderAddress
+            formData={formData}
+            updateFormData={updateFormData}
+          />
         </AccordionDetails>
       </Accordion>
 
@@ -166,7 +188,7 @@ export default function BookingProcess({ formData, updateFormData }) {
       <Accordion
         expanded={expanded === "panel-payment"}
         onChange={handleChange("panel-payment")}
-        disabled
+        // disabled={expanded !== "panel-review-order"}
       >
         <AccordionSummary aria-controls="panel6bh-content" id="panel6bh-header">
           <Typography variant="h6" sx={{ width: "33%", flexShrink: 0 }}>
@@ -182,4 +204,4 @@ export default function BookingProcess({ formData, updateFormData }) {
       </Accordion>
     </div>
   );
-}
+};

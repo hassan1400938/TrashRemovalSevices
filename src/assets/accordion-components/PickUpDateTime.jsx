@@ -18,7 +18,7 @@ export default function DateTime({ formData, updateFormData }) {
   const [pickupTime, setPickupTime] = React.useState("");
 
   React.useEffect(() => {
-    console.log("Pickup Date:" + pickupDate);
+    // console.log("Pickup Date:" + pickupDate);
 
     // Parse the string to a Date object
 
@@ -26,9 +26,8 @@ export default function DateTime({ formData, updateFormData }) {
 
     if (pickupDateObject.isValid()) {
       const formattedPickupDate = pickupDateObject.format("ddd, MMM D, YYYY");
-      console.log(formattedPickupDate);
+      // console.log(formattedPickupDate);
       // Update date in formData
-
       updateFormData((prevFormData) => {
         return {
           ...prevFormData,
@@ -44,16 +43,15 @@ export default function DateTime({ formData, updateFormData }) {
           },
         };
       });
-
-      console.log(
-        "data.date: " + formData.data.price_quote.date_time.pickup_date
-      );
+      // console.log(
+      //   "data.date: " + formData.data.price_quote.date_time.pickup_date
+      // );
     } else {
-      console.error("Invalid date string:", pickupDate);
+      // console.error("Invalid date string:", pickupDate);
     }
   }, [pickupDate]);
   React.useEffect(() => {
-    console.log("Pickup Time:" + pickupTime);
+    // console.log("Pickup Time:" + pickupTime);
 
     // Update time in formData
     const newData = {
@@ -70,16 +68,15 @@ export default function DateTime({ formData, updateFormData }) {
       },
     };
     updateFormData(newData);
-    console.log(
-      "data.time: " + formData.data.price_quote.date_time.pickup_time
-    );
+    // console.log(
+    //   "data.time: " + formData.data.price_quote.date_time.pickup_time
+    // );
   }, [pickupTime]);
 
   const handleDateChange = (newDate) => {
-    console.log("handleDateChange Called");
+    // console.log("handleDateChange Called");
 
     setPickupDate(newDate);
-
     // Reset the time when the date changes
     setPickupTime("");
   };
@@ -89,12 +86,12 @@ export default function DateTime({ formData, updateFormData }) {
     setPickupTime(event.target.value);
   };
 
-  const handleClick = () => {};
+  const handleContinueClick = () => {};
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Typography variant="body1">Pickup</Typography>
-      <Typography variant="body1" mt={2} onClick={handleClick}>
+      <Typography variant="body1" mt={2}>
         Provider will arrive within half an hour of your selected time. Eg., if
         you select 11 AM, provider will target to arrive between 10:30 - 11:30
         AM.
@@ -142,7 +139,7 @@ export default function DateTime({ formData, updateFormData }) {
       <Typography variant="body2" mt={2}>
         Need help? We are here for you! You can chat with us here.
       </Typography>
-      <Button variant="contained" size="large" onClick={handleClick}>
+      <Button variant="contained" size="large" onClick={handleContinueClick}>
         Continue
       </Button>
     </LocalizationProvider>

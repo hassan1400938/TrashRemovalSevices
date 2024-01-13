@@ -12,11 +12,11 @@ export default {
         base_price: 120,
         image: "",
       },
-      {
-        service_name: "Dumpster Rental",
-        base_price: 180,
-        image: "",
-      },
+      // {
+      //   service_name: "Dumpster Rental",
+      //   base_price: 180,
+      //   image: "",
+      // },
     ],
     services_by_location: [
       {
@@ -32,11 +32,11 @@ export default {
             price: 90,
             image: "",
           },
-          {
-            name: "Dumpster Rental",
-            price: 118,
-            image: "",
-          },
+          // {
+          //   name: "Dumpster Rental",
+          //   price: 118,
+          //   image: "",
+          // },
         ],
         vehicles: [
           {
@@ -45,7 +45,7 @@ export default {
           },
           {
             name: "Truck",
-            price: 18.0,
+            price: 25.0,
           },
         ],
       },
@@ -66,7 +66,27 @@ export default {
         vehicles: [
           {
             name: "Pick-Up Truck",
-            price: 14.99,
+            price: 19.99,
+          },
+          {
+            name: "Truck",
+            price: 18.0,
+          },
+        ],
+      },
+      {
+        zip_code: 92030,
+        services: [
+          {
+            name: "Waste Removal",
+            price: 90.0,
+            image: "",
+          },
+        ],
+        vehicles: [
+          {
+            name: "Pick-Up Truck",
+            price: 19.99,
           },
           {
             name: "Truck",
@@ -76,16 +96,20 @@ export default {
       },
     ],
     additional_items: [
-      { item_id: 1, item_name: "Ac Window Unit", price_each: 22.0 },
+      { item_id: 1, item_name: "Ac Window Unit", price: 22.0 },
       { item_id: 2, item_name: "Area Rug (<=6'x9')", price: 22.0 },
       { item_id: 3, item_name: "Area Rug (> 6'x9')", price: 38.0 },
       { item_id: 4, item_name: "Couch (4 Seater)", price: 55.0 },
-      { item_id: 5, item_name: "Futon", price_each: 44.0 },
+      { item_id: 5, item_name: "Futon", price: 44.0 },
       { item_id: 6, item_name: "Ottoman", price: 16.5 },
       { item_id: 7, item_name: "Trash Bin (35 Gallons)", price: 33.0 },
       { item_id: 8, item_name: "Yard Debris (per cubic yard)", price: 55.0 },
       { item_id: 9, item_name: "Bagster (Small)", price: 110.0 },
       { item_id: 10, item_name: "Fridge (Mini - Must be empty)", price: 22.0 },
+    ],
+    stairs_dismantling: [
+      { item_id: 1, item_name: "Stairs", price: 5 },
+      { item_id: 2, item_name: "Dismantling", price: 10 },
     ],
     price_quote: {
       basic_services: {
@@ -93,7 +117,6 @@ export default {
         service_price: 85,
         vehicle_name: "Pick-Up Truck",
         vehicle_price: 14.99,
-        basic_total: 0,
       },
       postal_code: "",
       date_time: {
@@ -104,11 +127,13 @@ export default {
       },
       tasks: {
         additional_items: [],
-        task_description: "",
+        stairs_dismantling: [],
+        task_description_note: "",
       },
       frequency: "",
       coupon_code: "",
       address: {
+        address_type: "Residential",
         company_name: "",
         pickup_address: "",
         apt_number: "",
