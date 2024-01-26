@@ -13,22 +13,22 @@ import { MobileDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import moment from "moment";
 
-export default function DateTime({ formData, updateFormData }) {
+export default function DateTime({ formData, updateFormData, onContinue }) {
+  // console.log("PickUpDateTime.jsx rendered");
+
   const [pickupDate, setPickupDate] = React.useState(null);
   const [pickupTime, setPickupTime] = React.useState("");
 
   React.useEffect(() => {
-    // console.log("Pickup Date:" + pickupDate);
+    console.log("PickupDateTime renedered");
 
-    // Parse the string to a Date object
-
-    const pickupDateObject = moment(pickupDate);
+    const pickupDateObject = moment(pickupDate); // Parse the string to a Date object
 
     if (pickupDateObject.isValid()) {
       const formattedPickupDate = pickupDateObject.format("ddd, MMM D, YYYY");
-      // console.log(formattedPickupDate);
-      // Update date in formData
+
       updateFormData((prevFormData) => {
+        // Update date in formData
         return {
           ...prevFormData,
           data: {
@@ -43,16 +43,11 @@ export default function DateTime({ formData, updateFormData }) {
           },
         };
       });
-      // console.log(
-      //   "data.date: " + formData.data.price_quote.date_time.pickup_date
-      // );
     } else {
-      // console.error("Invalid date string:", pickupDate);
+      console.error("Invalid date string:", pickupDate);
     }
   }, [pickupDate]);
   React.useEffect(() => {
-    // console.log("Pickup Time:" + pickupTime);
-
     // Update time in formData
     const newData = {
       ...formData,
@@ -68,30 +63,43 @@ export default function DateTime({ formData, updateFormData }) {
       },
     };
     updateFormData(newData);
-    // console.log(
-    //   "data.time: " + formData.data.price_quote.date_time.pickup_time
-    // );
   }, [pickupTime]);
 
   const handleDateChange = (newDate) => {
-    // console.log("handleDateChange Called");
-
     setPickupDate(newDate);
-    // Reset the time when the date changes
-    setPickupTime("");
+    setPickupTime(""); // Reset the time when the date changes
   };
 
   const handlePickupTimeChange = (event) => {
-    // console.log(event.target.value);
     setPickupTime(event.target.value);
   };
 
-  const handleContinueClick = () => {};
+  const dateTimePQ = formData.data.price_quote.date_time;
+  React.useEffect(() => {
+    const updatedFormData = {
+      ...formData,
+      data: {
+        ...formData.data,
+        form_disabled: {
+          ...formData.data.form_disabled,
+          tasks:
+            (dateTimePQ.pickup_date && dateTimePQ.pickup_time) !== ""
+              ? false
+              : true, //
+        },
+      },
+    };
+    updateFormData(updatedFormData);
+  }, [dateTimePQ]);
+
+  const handleContinueClick = () => {
+    !formData.data.form_disabled.tasks && onContinue();
+  };
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Typography variant="body1">Pickup</Typography>
-      <Typography variant="body1" mt={2}>
+      <Typography variant="subtitle1">Pickup</Typography>
+      <Typography variant="body1" my={2}>
         Provider will arrive within half an hour of your selected time. Eg., if
         you select 11 AM, provider will target to arrive between 10:30 - 11:30
         AM.
@@ -103,10 +111,7 @@ export default function DateTime({ formData, updateFormData }) {
           onChange={handleDateChange}
           autoFocus={true}
           closeOnSelect={true}
-          shouldDisableDate={(date) => {
-            // Disable dates in the past
-            return date < new Date();
-          }}
+          disablePast
         />
         <Box sx={{ m: 1, minWidth: 120 }}>
           <FormControl fullWidth>
@@ -118,6 +123,7 @@ export default function DateTime({ formData, updateFormData }) {
               label="Time"
               placeholder="Time"
               onChange={handlePickupTimeChange}
+              // disabled = {}
             >
               <MenuItem value={"8:00 AM"}>08:00 AM</MenuItem>
               <MenuItem value={"9:00 AM"}>09:00 AM</MenuItem>
@@ -136,12 +142,16 @@ export default function DateTime({ formData, updateFormData }) {
           </FormControl>
         </Box>
       </DemoContainer>
-      <Typography variant="body2" mt={2}>
-        Need help? We are here for you! You can chat with us here.
-      </Typography>
-      <Button variant="contained" size="large" onClick={handleContinueClick}>
-        Continue
-      </Button>
+      <Box my={2}>
+        <Typography>
+          Need help? We are here for you! You can chat with us here.
+        </Typography>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <Button variant="contained" size="large" onClick={handleContinueClick}>
+          Continue
+        </Button>
+      </Box>
     </LocalizationProvider>
   );
 }

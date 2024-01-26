@@ -1,100 +1,24 @@
-import React from "react";
-import { Box, Typography, Button, TextField } from "@mui/material";
+import React, { useEffect } from "react";
+import { Box, Typography, Button } from "@mui/material";
+import CusotmRadioButtons from "./CusotmRadioButtons";
+import ZipCodeTextField from "./ZipCodeTextField";
 
-export default function ChooseAService({ formData, updateFormData }) {
-  const [userPostalCode, setUserPostalCode] = React.useState("");
-  const [serviceAvailability, setServiceAvailability] = React.useState(
-    "Check if we serve in your area."
+export default function ChooseAService({
+  formData,
+  updateFormData,
+  onContinue,
+}) {
+  // console.log("ChooseAService.jsx rendered");
+  // console.log(formData.data);
+  const basic_services = formData.data.basic_services;
+  const basicServicePQ = formData.data.price_quote.basic_services.service;
+  const serviceAvailability = formData.data.texts.service_availability;
+  const postalCodePQ = formData.data.price_quote.address.postal_code;
+  const [serviceSelected, setServiceSelected] = React.useState(
+    basic_services[0]
   );
-  //If user enter zipcode
-  const handlePostalCodeChange = (event) => {
-    const newPostalCode = event.target.value;
-    setUserPostalCode(newPostalCode);
 
-    // Update the serviceAvailability based on the contents of the TextField i.e zip code
-    setServiceAvailability(
-      newPostalCode.trim() === ""
-        ? "Check if we serve in your area."
-        : "Check if we serve in your area."
-      // : "Hit CONTINUE to verify."
-    );
-  };
-
-  //When user hit continue button for ZIP code verification
-  function handlePostalCodeVerification() {
-    const isServiceAvailable = formData.data.services_by_location.some(
-      (location) => location.zip_code === parseInt(userPostalCode, 10)
-    );
-    // Return the appropriate message based on the postal code verification
-    setServiceAvailability(
-      isServiceAvailable
-        ? "Service is available in your area"
-        : "We do not serve in your area"
-    );
-
-    if (isServiceAvailable) {
-      // Update the 'postal_code' value in price_quote
-      const updatedFormData = {
-        ...formData,
-        data: {
-          ...formData.data,
-          price_quote: {
-            ...formData.data.price_quote,
-            postal_code: userPostalCode,
-          },
-        },
-      };
-      // Call the callback function to update the data in the parent
-      updateFormData(updatedFormData);
-    }
-  }
-
-  //////////////////////////////////////////
-
-  const renderButtons = () => {
-    if (
-      serviceAvailability.includes("do not serve") ||
-      // serviceAvailability.includes("CONTINUE") ||
-      serviceAvailability.includes("if we serve")
-    ) {
-      return formData.data.basic_services.map((item) => (
-        <Button
-          variant="outlined"
-          size="large"
-          key={item.service_name}
-          onClick={() => handleButtonClick(item.service_name, item.base_price)}
-        >
-          {item.service_name}
-          <Typography>${item.base_price}</Typography>
-        </Button>
-      ));
-    } else if (
-      userPostalCode.trim() !== "" &&
-      serviceAvailability.includes("available")
-    ) {
-      const servicesInLocation = formData.data.services_by_location.find(
-        (location) => location.zip_code === parseInt(userPostalCode, 10)
-      );
-      if (servicesInLocation) {
-        //render buttons
-        return servicesInLocation.services.map((service) => (
-          <Button
-            variant="outlined"
-            size="large"
-            key={service.name}
-            onClick={() => handleButtonClick(service.name, service.price)}
-          >
-            {service.name}
-            <Typography>${service.price}</Typography>
-          </Button>
-        ));
-      } else null;
-    } else {
-      return [];
-    }
-  };
-
-  const handleButtonClick = (serviceName, servicePrice) => {
+  useEffect(() => {
     const newData = {
       ...formData,
       data: {
@@ -103,53 +27,84 @@ export default function ChooseAService({ formData, updateFormData }) {
           ...formData.data.price_quote,
           basic_services: {
             ...formData.data.price_quote.basic_services,
-            service: serviceName,
-            service_price: servicePrice,
+            service: serviceSelected.name,
+            service_price: serviceSelected.price,
           },
         },
       },
     };
     updateFormData(newData);
+  }, [serviceSelected]);
+
+  // Rendered services
+  const renderServices = () => {
+    console.log(serviceAvailability);
+    if (
+      serviceAvailability.includes("do not serve") ||
+      // serviceAvailability.includes("CONTINUE") ||
+      serviceAvailability.includes("if we serve")
+    ) {
+      return (
+        <Box display="flex" my={2}>
+          {/* Render default services */}
+          <CusotmRadioButtons
+            radioButtonData={basic_services}
+            handleSelection={handleServiceSelection}
+          />
+        </Box>
+      );
+    } else if (
+      postalCodePQ.trim() !== "" &&
+      serviceAvailability.includes("available")
+    ) {
+      const servicesInLocation = formData.data.services_by_location.find(
+        (location) => location.zip_code === parseInt(postalCodePQ, 10)
+      );
+      if (servicesInLocation) {
+        //render services from location
+        // console.log("Services in Zip code");
+        // console.log(servicesInLocation.services);
+        return (
+          <Box display="flex" my={2}>
+            <CusotmRadioButtons
+              radioButtonData={servicesInLocation.services}
+              handleSelection={handleServiceSelection}
+            />
+          </Box>
+        );
+      } else null;
+    } else {
+      return [];
+    }
+  };
+
+  const handleServiceSelection = (newService) => {
+    setServiceSelected((service) => ({
+      ...service,
+      ...newService,
+    }));
+  };
+
+  const handleContinue = () => {
+    if (!formData.data.form_disabled.date_time) {
+      onContinue();
+    }
   };
 
   return (
     <Box>
-      <Typography variant="body2" mt={2}>
-        What do you need?
-      </Typography>
-      {renderButtons()}
-      <Typography
-        variant="body2"
-        mt={2}
-        style={{
-          color: serviceAvailability.includes("available")
-            ? "green"
-            : serviceAvailability.includes("do not")
-            ? "red"
-            : "black",
-          fontWeight: serviceAvailability.includes("available")
-            ? "bold"
-            : serviceAvailability.includes("do not")
-            ? "bold"
-            : "normal",
-        }}
-      >
-        {serviceAvailability}
-      </Typography>
-      <TextField
-        id="outlined-basic"
-        label="Enter your ZIP code"
-        variant3="outlined"
-        value={userPostalCode}
-        onChange={handlePostalCodeChange}
-      />
-      <Button
-        variant="contained"
-        size="large"
-        onClick={handlePostalCodeVerification}
-      >
-        Continue
-      </Button>
+      <Typography variant="subtitle1">What do you need?</Typography>
+      <Box mt={2} mb={5}>
+        {renderServices()}
+      </Box>
+      <Box>
+        <ZipCodeTextField formData={formData} updateFormData={updateFormData} />
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "end" }}>
+        <Button variant="contained" size="large" onClick={handleContinue}>
+          Continue
+        </Button>
+      </Box>
     </Box>
   );
 }

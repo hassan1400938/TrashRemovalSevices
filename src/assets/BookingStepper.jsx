@@ -1,7 +1,8 @@
 import React from "react";
-import { Box, Stepper, Step, StepLabel } from "@mui/material";
+import { Box, Stepper, Step, StepLabel, Hidden } from "@mui/material";
 
 export default function BookingStepper({ expanded }) {
+  // console.log("BookingStepper.jsx randered");
   const steps = [
     "Pick a Service",
     "Date and Time",
@@ -30,14 +31,21 @@ export default function BookingStepper({ expanded }) {
     }
   };
   return (
-    <Box sx={{ width: "100%" }} className="stepper">
-      <Stepper activeStep={getActiveStep()} alternativeLabel>
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
+    <Box
+      sx={{
+        width: "100%",
+        my: 2,
+      }}
+    >
+      <Hidden mdDown>
+        <Stepper activeStep={getActiveStep()} alternativeLabel>
+          {steps.map((label) => (
+            <Step key={label}>
+              <StepLabel color="primary">{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+      </Hidden>
     </Box>
   );
 }

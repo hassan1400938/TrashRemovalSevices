@@ -8,7 +8,9 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import StairsDismantlingNumberInput from "./StairsDismantlingNumberInput";
+
 export default function StairsAndDismantling({ formData, updateFormData }) {
+  // console.log("StairsAndDismantling.jsx rendered");
   const [
     stairsIndex,
     dismantlingIndex,
@@ -20,8 +22,8 @@ export default function StairsAndDismantling({ formData, updateFormData }) {
   const stairs = formData.data.stairs_dismantling[stairsIndex];
   const dismantling = formData.data.stairs_dismantling[dismantlingIndex];
 
-  const [isStairs, setIsStairs] = React.useState("");
-  const [needsDismantling, setNeedsDismantling] = React.useState("");
+  const [isStairs, setIsStairs] = React.useState("no");
+  const [needsDismantling, setNeedsDismantling] = React.useState("no");
 
   const handleStairsChange = (event) => {
     setIsStairs(event.target.value);
@@ -124,17 +126,19 @@ export default function StairsAndDismantling({ formData, updateFormData }) {
       },
     };
     updateFormData(updatedFormData);
-    console.log(formData.data.price_quote);
   };
 
   return (
-    <Box>
+    <Box my={2}>
       <Box>
-        <Typography variant="body1">Stairs</Typography>
+        <Typography variant="subtitle1" my={2}>
+          Stairs
+        </Typography>
         <Typography variant="body1">
           Does the provider need to climb stairs?
         </Typography>
-        <Grid container spacing={2} alignItems="center">
+
+        <Grid container my={3} spacing={2} alignItems="center">
           <Grid item>
             <RadioGroup
               aria-labelledby="is-stairs-buttons-group"
@@ -142,8 +146,10 @@ export default function StairsAndDismantling({ formData, updateFormData }) {
               value={isStairs}
               onChange={handleStairsChange}
             >
-              <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-              <FormControlLabel value="no" control={<Radio />} label="No" />
+              <Box display="flex" alignItems="center">
+                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+                <FormControlLabel value="no" control={<Radio />} label="No" />
+              </Box>
             </RadioGroup>
           </Grid>
 
@@ -169,13 +175,16 @@ export default function StairsAndDismantling({ formData, updateFormData }) {
           )}
         </Grid>
       </Box>
+      {/* Dismantling */}
       <Box>
-        <Typography variant="body1">Dismantling</Typography>
+        <Typography variant="subtitle1" my={2}>
+          Dismantling
+        </Typography>
         <Typography variant="body1">
           Does one of your items require dismantling?
         </Typography>
 
-        <Grid container spacing={2} alignItems="center">
+        <Grid container my={3} spacing={2} alignItems="center">
           <Grid item>
             <RadioGroup
               aria-labelledby="needs-dismantling-buttons-group"
@@ -183,8 +192,10 @@ export default function StairsAndDismantling({ formData, updateFormData }) {
               value={needsDismantling}
               onChange={handleDismantlingChange}
             >
-              <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-              <FormControlLabel value="no" control={<Radio />} label="No" />
+              <Box display="flex" alignItems="center">
+                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+                <FormControlLabel value="no" control={<Radio />} label="No" />
+              </Box>
             </RadioGroup>
           </Grid>
 

@@ -1,12 +1,13 @@
 import React from "react";
-import { Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import CusotmRadioButtons from "./CusotmRadioButtons";
 
 export default function ChooseAVehicle({
   formData,
   changeDefaultVehicle,
-  handleButtonClick,
+  handleVehiclesSelection,
 }) {
-  const { postal_code } = formData.data.price_quote;
+  const { postal_code } = formData.data.price_quote.address;
 
   // Find Services for the current postal code
   const servicesInLocation = formData.data.services_by_location.find(
@@ -31,24 +32,27 @@ export default function ChooseAVehicle({
     } else {
       console.log("default vehicle didn't update");
     }
-  }, [formData.data.price_quote.postal_code]);
+  }, [formData.data.price_quote.address.postal_code]);
 
-  // Render available vehicles as buttons
+  // Render available vehicles
   if (servicesInLocation) {
-    return servicesInLocation.vehicles.map((vehicle) => (
-      <Button
-        variant="outlined"
-        size="large"
-        key={vehicle.name}
-        onClick={() => handleButtonClick(vehicle.name, vehicle.price)}
-      >
-        {vehicle.name}
-        <Typography>${vehicle.price}</Typography>
-      </Button>
-    ));
-  } else {
-    console.log(
-      "No vehicles available for the specified location so NO BUTTON Rendered"
+    return (
+      <>
+        <Typography variant="subtitle1">Choose a vehicle</Typography>
+        <Typography variant="body1" my={2}>
+          Make your best guess. We will review every order.
+        </Typography>
+        <Box display="flex" my={2}>
+          <CusotmRadioButtons
+            radioButtonData={servicesInLocation.vehicles}
+            handleSelection={handleVehiclesSelection}
+          />
+        </Box>
+      </>
     );
+  } else {
+    // console.log(
+    //   "No vehicles available for the specified location so NO BUTTON Rendered"
+    // );
   }
 }

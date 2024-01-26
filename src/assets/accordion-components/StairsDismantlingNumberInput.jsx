@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { IconButton, Input, Box } from "@mui/material";
+import { IconButton, Box, TextField } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import { useTheme } from "@emotion/react";
 
 const StairsDismantlingNumberInput = ({ onQuantityPQChange }) => {
+  const theme = useTheme();
   const [quantity, setQuantity] = useState(1);
 
   const handleInputChange = (event) => {
@@ -31,21 +33,35 @@ const StairsDismantlingNumberInput = ({ onQuantityPQChange }) => {
 
   return (
     <Box>
-      <IconButton onClick={handleDecrement}>
-        <RemoveCircleIcon />
+      <IconButton
+        onClick={handleDecrement}
+        disabled={quantity === 1}
+        sx={{
+          "&:disabled": {
+            color: theme.palette.primary.lightest,
+          },
+        }}
+      >
+        <RemoveCircleIcon color={quantity !== 1 ? "primary" : "inherit"} />
       </IconButton>
-      <Input
+      <TextField
         value={quantity}
         onChange={handleInputChange}
         onKeyDown={handleInputChange}
+        readOnly
+        size="small"
         inputProps={{
-          type: "number",
-          style: { width: "40px", textAlign: "center" },
+          style: {
+            width: "15px",
+            textAlign: "center",
+            fontSize: "0.8em",
+            backgroundColor: theme.palette.primary.lightest,
+          },
           min: 1,
         }}
       />
       <IconButton onClick={handleIncrement}>
-        <AddCircleIcon />
+        <AddCircleIcon color="primary" />
       </IconButton>
     </Box>
   );

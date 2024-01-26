@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { IconButton, Input, Box } from "@mui/material";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import { IconButton, Box, TextField } from "@mui/material";
+import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
+import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
 import ConfirmationDialog from "./ConfirmationDialog";
+import { useTheme } from "@emotion/react";
 
 const AdditonalItemsNumberInput = ({
   itemPQIndex,
@@ -10,6 +11,8 @@ const AdditonalItemsNumberInput = ({
   onQuantityPQChange,
   removeItemFromList,
 }) => {
+  const theme = useTheme();
+
   const [quantity, setQuantity] = useState(quantityPQ);
 
   //For Confirmation Dialog
@@ -53,22 +56,33 @@ const AdditonalItemsNumberInput = ({
   };
 
   return (
-    <Box>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
       <IconButton onClick={handleDecrement}>
-        <RemoveCircleIcon />
+        <RemoveCircleOutlineOutlinedIcon color="primary" />
       </IconButton>
-      <Input
+      <TextField
         value={quantity}
         onChange={handleInputChange}
         onKeyDown={handleInputChange}
+        readOnly
+        size="small"
         inputProps={{
-          type: "number",
-          style: { width: "40px", textAlign: "center" },
+          style: {
+            width: "15px",
+            textAlign: "center",
+            fontSize: "0.8em",
+            backgroundColor: theme.palette.primary.lightest,
+          },
           min: 1,
         }}
       />
       <IconButton onClick={handleIncrement}>
-        <AddCircleIcon />
+        <AddCircleOutlineOutlinedIcon color="primary" />
       </IconButton>
       <ConfirmationDialog
         open={openDialog}

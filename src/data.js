@@ -1,36 +1,53 @@
 export default {
   success: true,
   data: {
+    texts: {
+      service_availability: "Check if we serve in your area.",
+    },
+    // custom_radio_btn_index: "",
+    form_disabled: {
+      choose_a_service: false,
+      date_time: true,
+      tasks: true,
+      review_order: true,
+      pre_payment: true,
+    },
+
     basic_services: [
       {
-        service_name: "Waste Removal",
-        base_price: 85,
-        image: "",
+        name: "Waste Removal",
+        desc: "description",
+        price: 88,
+        icon: "waste.png",
       },
       {
-        service_name: "Cardboard Removal",
-        base_price: 120,
-        image: "",
+        name: "Cardboard Removal",
+        desc: "",
+        price: 999,
+        icon: "cardboard.png",
       },
       // {
       //   service_name: "Dumpster Rental",
       //   base_price: 180,
-      //   image: "",
+      //   icon: "",
       // },
     ],
+
     services_by_location: [
       {
         zip_code: 92028,
         services: [
           {
             name: "Waste Removal",
+            desc: "",
             price: 80,
-            image: "",
+            icon: "waste.png",
           },
           {
             name: "Cardboard Removal",
+            desc: "description",
             price: 90,
-            image: "",
+            icon: "cardboard.png",
           },
           // {
           //   name: "Dumpster Rental",
@@ -41,11 +58,15 @@ export default {
         vehicles: [
           {
             name: "Pick-Up Truck",
+            desc: "6ft long",
             price: 14.99,
+            icon: "cardboard.png",
           },
           {
             name: "Truck",
+            desc: "8ft long",
             price: 25.0,
+            icon: "cardboard.png",
           },
         ],
       },
@@ -54,23 +75,29 @@ export default {
         services: [
           {
             name: "Waste Removal",
+            desc: "",
             price: 80.0,
-            image: "",
+            icon: "waste.png",
           },
           {
             name: "Cardboard Removal",
+            desc: "",
             price: 90.0,
-            image: "",
+            icon: "cardboard.png",
           },
         ],
         vehicles: [
           {
             name: "Pick-Up Truck",
+            desc: "6ft long",
             price: 19.99,
+            icon: "cardboard.png",
           },
           {
             name: "Truck",
+            desc: "8ft long",
             price: 18.0,
+            icon: "cardboard.png",
           },
         ],
       },
@@ -79,18 +106,23 @@ export default {
         services: [
           {
             name: "Waste Removal",
+            desc: "",
             price: 90.0,
-            image: "",
+            icon: "waste.png",
           },
         ],
         vehicles: [
           {
             name: "Pick-Up Truck",
+            desc: "6ft long",
             price: 19.99,
+            icon: "cardboard.png",
           },
           {
             name: "Truck",
+            desc: "8ft long",
             price: 18.0,
+            icon: "cardboard.png",
           },
         ],
       },
@@ -113,17 +145,16 @@ export default {
     ],
     price_quote: {
       basic_services: {
-        service: "Waste Removal",
-        service_price: 85,
-        vehicle_name: "Pick-Up Truck",
-        vehicle_price: 14.99,
+        service: "",
+        service_price: 0,
+        vehicle_name: "",
+        vehicle_price: 0,
       },
-      postal_code: "",
       date_time: {
         pickup_date: "",
         pickup_time: "",
-        drop_off_date: "",
-        drop_off_time: "",
+        // drop_off_date: "",
+        // drop_off_time: "",
       },
       tasks: {
         additional_items: [],
@@ -133,10 +164,17 @@ export default {
       frequency: "",
       coupon_code: "",
       address: {
+        postal_code: "",
         address_type: "Residential",
         company_name: "",
-        pickup_address: "",
+        pickup_street_address: "",
         apt_number: "",
+      },
+      customer: {
+        first_name: "",
+        last_name: "",
+        email: "",
+        mobile: "",
       },
       grand_total: 0,
     },
