@@ -1,10 +1,8 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import StripePayment from "./StripePayment";
 
@@ -13,13 +11,13 @@ export default function StripePaymentDialog({ formData }) {
 
   const priceQuoteCustomer = formData.data.price_quote.customer;
 
-  console.log(priceQuoteCustomer);
+  // console.log(priceQuoteCustomer);
   const handleClickOpen = () => {
     (priceQuoteCustomer.first_name && priceQuoteCustomer.email) != ""
       ? setOpen(true)
       : setOpen(false);
 
-    console.log(priceQuoteCustomer);
+    // console.log(priceQuoteCustomer);
   };
 
   const handleClose = () => {

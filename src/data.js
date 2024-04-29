@@ -1,6 +1,7 @@
 export default {
   success: true,
   data: {
+    // accordion_step: "",
     texts: {
       service_availability: "Check if we serve in your area.",
     },

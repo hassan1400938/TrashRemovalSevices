@@ -4,8 +4,7 @@ import DateTime from "./accordion-components/PickUpDateTime";
 import TaskDescription from "./accordion-components/TaskDescription";
 import Frequency from "./accordion-components/Frequency";
 import ReviewOrderAddress from "./accordion-components/ReviewOrderAddress";
-import BookingStepper from "./BookingStepper";
-import { Hidden } from "@mui/material";
+import { Hidden, Box, Button } from "@mui/material";
 import {
   Accordion,
   AccordionDetails,
@@ -22,7 +21,6 @@ const CommonAccordionDetailsStyle = {
 };
 
 export default function BookingProcess({ formData, updateFormData }) {
-  // console.log("BookingProcess.jsx Component Rendered");
   const [expanded, setExpanded] = React.useState("panel-services");
   const datePickerRef = React.useRef(null);
   const tasksRef = React.useRef(null);
@@ -41,19 +39,56 @@ export default function BookingProcess({ formData, updateFormData }) {
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
 
+  const handleBack = () => {
+    // Define the order of accordion panels
+    const accordionOrder = [
+      "panel-services",
+      "panel-date_time",
+      "panel-tasks",
+      // Add other panels as needed
+      "panel-review-order",
+      "panel-payment",
+    ];
+
+    // Find the index of the currently expanded panel
+    const currentIndex = accordionOrder.indexOf(expanded);
+
+    // If the current index is not the first panel, go back to the previous panel
+    if (currentIndex > 0) {
+      const previousPanel = accordionOrder[currentIndex - 1];
+      setExpanded(previousPanel);
+    }
+  };
+
+  React.useEffect(() => {
+    const newData = {
+      ...formData,
+      data: {
+        ...formData.data,
+        accordion_step: expanded,
+      },
+    };
+    updateFormData(newData);
+  }, [expanded]);
+
   return (
     <div>
-      {/* Pass the expanded state to BookingStepper */}
-
-      <BookingStepper expanded={expanded} />
-
+      <Box sx={{ display: "flex", justifyContent: "end" }}>
+        <Button
+          variant="outlined"
+          size="large"
+          sx={{ width: "168px" }}
+          onClick={handleBack}
+        >
+          Back
+        </Button>
+      </Box>
       {expanded === "panel-services" && (
         <Typography variant="h2" sx={{ mb: 2 }}>
           {formData.data.price_quote.basic_services.service}
         </Typography>
       )}
 
-      {/* <Hidden mdDown> */}
       {/* A#1 Pick a Service Accordion*/}
       <Accordion
         expanded={expanded === "panel-services"}
@@ -243,7 +278,6 @@ export default function BookingProcess({ formData, updateFormData }) {
           />
         </AccordionDetails>
       </Accordion>
-      {/* </Hidden> */}
     </div>
   );
 }

@@ -17,6 +17,7 @@ export default function CusotmRadioButtons({
       name="choose-a-service-radio-group"
       // defaultValue={radioButtonData[0].name} // Set the default value based on your data
       sx={{
+        marginLeft: 1.5,
         flexDirection: "row",
         gap: 2,
       }}
@@ -53,15 +54,12 @@ export default function CusotmRadioButtons({
                 flexDirection: "column",
                 alignItems: "center",
                 // gap: 1.5,
-                minWidth: 120,
+                // minWidth: 180,
+                minWidth: { xs: "100%", sm: "100%", md: 180 },
               }}
               variant="outlined"
             >
-              <img
-                width={80}
-                alt={value.name}
-                src={`/src/assets/images/${value.icon}`}
-              />
+              <img width={80} alt={value.name} src={`/images/${value.icon}`} />
               <Box sx={{ pt: 2 }}>
                 <Typography variant="body1" sx={{ textAlign: "center" }}>
                   {value.name}
@@ -72,6 +70,9 @@ export default function CusotmRadioButtons({
               </Box>
             </Box>
           }
+          sx={{
+            width: { xs: "100%", sm: "100%" }, // Set width to 100% on xs and sm screens
+          }}
         />
       ))}
     </RadioGroup>

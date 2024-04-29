@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, Hidden } from "@mui/material";
 import CusotmRadioButtons from "./CusotmRadioButtons";
 import ZipCodeTextField from "./ZipCodeTextField";
 
@@ -41,11 +41,11 @@ export default function ChooseAService({
     console.log(serviceAvailability);
     if (
       serviceAvailability.includes("do not serve") ||
-      // serviceAvailability.includes("CONTINUE") ||
       serviceAvailability.includes("if we serve")
+      // serviceAvailability.includes("CONTINUE") ||
     ) {
       return (
-        <Box display="flex" my={2}>
+        <Box>
           {/* Render default services */}
           <CusotmRadioButtons
             radioButtonData={basic_services}
@@ -85,26 +85,66 @@ export default function ChooseAService({
     }));
   };
 
+  React.useEffect(() => {
+    const updatedFormData = {
+      ...formData,
+      data: {
+        ...formData.data,
+        form_disabled: {
+          ...formData.data.form_disabled,
+          date_time:
+            basicServicePQ !== "" && serviceAvailability.includes("available")
+              ? false
+              : true,
+        },
+      },
+    };
+    updateFormData(updatedFormData);
+  }, [basicServicePQ, serviceAvailability]);
+
   const handleContinue = () => {
     if (!formData.data.form_disabled.date_time) {
       onContinue();
     }
   };
 
+  const handleBackMobile = () => {};
+  const handleContinueMobile = () => {};
+
   return (
     <Box>
       <Typography variant="subtitle1">What do you need?</Typography>
-      <Box mt={2} mb={5}>
-        {renderServices()}
-      </Box>
+      <Box my={3}>{renderServices()}</Box>
       <Box>
         <ZipCodeTextField formData={formData} updateFormData={updateFormData} />
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "end" }}>
-        <Button variant="contained" size="large" onClick={handleContinue}>
-          Continue
-        </Button>
-      </Box>
+      <Hidden mdDown>
+        <Box sx={{ display: "flex", justifyContent: "end" }}>
+          <Button variant="contained" size="large" onClick={handleContinue}>
+            Continue
+          </Button>
+        </Box>
+      </Hidden>
+      <Hidden mdUp>
+        <Box sx={{ display: "flex", marginTop: 2 }}>
+          <Button
+            variant="outlined"
+            sx={{ width: "50%", marginRight: 0.5 }}
+            size="large"
+            onClick={handleBackMobile}
+          >
+            Back
+          </Button>
+          <Button
+            variant="contained"
+            sx={{ width: "50%", marginLeft: 0.5 }}
+            size="large"
+            onClick={handleContinueMobile}
+          >
+            Continue
+          </Button>
+        </Box>
+      </Hidden>
     </Box>
   );
 }

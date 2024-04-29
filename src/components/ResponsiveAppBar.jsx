@@ -15,7 +15,7 @@ function ResponsiveAppBar() {
           {/* Logo */}
           <img
             alt={theme.site.name}
-            src={`/src/assets/images/${theme.site.logo}`}
+            src={`/images/${theme.site.logo}`}
             width="130px"
             sx={{ flexGrow: 1 }}
           />

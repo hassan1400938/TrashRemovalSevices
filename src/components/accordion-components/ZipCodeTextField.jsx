@@ -76,14 +76,6 @@ const ZipCodeTextField = ({ formData, updateFormData }) => {
         ...formData,
         data: {
           ...formData.data,
-          form_disabled: {
-            ...formData.data.form_disabled,
-            date_time:
-              formData.data.price_quote.basic_services.service !== "" &&
-              servicesInLocation
-                ? false
-                : true, //
-          },
           texts: {
             ...formData.data.texts,
             service_availability: "Service is available in your area.",
@@ -124,22 +116,6 @@ const ZipCodeTextField = ({ formData, updateFormData }) => {
       };
       updateFormData(updatedFormData);
     }
-
-    // if (basicServicePQ !== "" && serviceAvailability.includes("available")) {
-    //   const newData = {
-    //     ...formData,
-    //     data: {
-    //       ...formData.data,
-    //       form_disabled: {
-    //         ...formData.data.form_states,
-    //         date_time: true,
-    //       },
-    //     },
-    //   };
-    //   updateFormData(newData);
-
-    //   onContinue();
-    // }
   }
 
   return (
@@ -163,6 +139,10 @@ const ZipCodeTextField = ({ formData, updateFormData }) => {
         {serviceAvailabilityText}
       </Typography>
       <TextField
+        fullWidth
+        sx={{
+          width: { xs: "100%", sm: "100%", md: "50%" },
+        }}
         required
         type="search"
         label="Enter your ZIP code"

@@ -1,14 +1,15 @@
 import React from "react";
 import data from "./data";
-import BookingProcess from "./assets/BookingProcess";
-import PriceQuote from "./assets/PriceQuote";
-import { Box, Typography, Grid } from "@mui/material";
-import { useTheme } from "@emotion/react";
-import ResponsiveAppBar from "./assets/ResponsiveAppBar";
+import BookingProcess from "./components/BookingProcess";
+import PriceQuote from "./components/PriceQuote";
+import { Box, Typography, Grid, Hidden } from "@mui/material";
+import ResponsiveAppBar from "./components/ResponsiveAppBar";
+import BookingProgress from "./components/BookingProgress";
+import MobileBookingProcess from "./components/MobileBookingProcess";
+import PriceQuoteDialog from "./components/PriceQuoteDialog";
 
 function App() {
   console.log("App Component Rendered");
-  const theme = useTheme();
   const [formData, setFormData] = React.useState(data);
   const updateFormData = (newData) => {
     setFormData(newData);
@@ -17,15 +18,23 @@ function App() {
     <React.Fragment>
       <Box
         sx={{
-          backgroundColor: theme.palette.primary.lightest,
           minHeight: "100vh",
         }}
       >
         <ResponsiveAppBar />
+        <Hidden mdUp>
+          <BookingProgress formData={formData} />
+          <PriceQuoteDialog
+            formData={formData}
+            updateFormData={updateFormData}
+          />
+        </Hidden>
         <Box sx={{ p: { xs: 2, sm: 2, md: 3, lg: 5 } }}>
-          <Typography variant="h1" sx={{ my: 3 }}>
-            Amphaul Booking
-          </Typography>
+          <Hidden mdDown>
+            <Typography variant="h1" my={3}>
+              Amphaul Booking
+            </Typography>
+          </Hidden>
           <Grid container spacing={2}>
             <Grid
               item
@@ -34,10 +43,18 @@ function App() {
               md={8}
               sx={{ order: { xs: 2, sm: 2, md: 1 } }}
             >
-              <BookingProcess
-                formData={formData}
-                updateFormData={updateFormData}
-              />
+              <Hidden mdDown>
+                <BookingProcess
+                  formData={formData}
+                  updateFormData={updateFormData}
+                />
+              </Hidden>
+              <Hidden mdUp>
+                <MobileBookingProcess
+                  formData={formData}
+                  updateFormData={updateFormData}
+                />
+              </Hidden>
               <Box>
                 <Typography sx={{ mt: 3, fontSize: "0.6em" }} variant="body2">
                   Powered by RIXOSOL
@@ -51,7 +68,18 @@ function App() {
               md={4}
               sx={{ order: { xs: 1, sm: 1, md: 2 } }}
             >
-              <PriceQuote formData={formData} updateFormData={updateFormData} />
+              <Hidden mdDown>
+                <Typography variant="body2">Your Progress</Typography>
+                <Box py={2}>
+                  <BookingProgress formData={formData} />
+                </Box>
+              </Hidden>
+              <Hidden mdDown>
+                <PriceQuote
+                  formData={formData}
+                  updateFormData={updateFormData}
+                />
+              </Hidden>
               {console.log(formData.data.price_quote)}
               {console.log(formData.data.form_disabled)}
             </Grid>
