@@ -1,5 +1,5 @@
 import React from "react";
-import ChooseAService from "../assets/accordion-components/ChooseAService";
+import ChooseAService from "./accordion-components/ChooseAService";
 
 export default function MobileBookingProcess({ formData, updateFormData }) {
   const handleContinue = (panel) => () => {
