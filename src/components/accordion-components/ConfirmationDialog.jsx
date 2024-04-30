@@ -16,10 +16,11 @@ const ConfirmationDialog = ({ open, onClose, onConfirm, title, content }) => {
         <DialogContentText>{content}</DialogContentText>
       </DialogContent>
       <DialogActions>
-        {/* <Button variant="outlined" onClick={onClose} color="primary">
-          Cancel
-        </Button> */}
-        <Button variant="contained" onClick={onConfirm} color="primary">
+        <Button
+          variant="contained"
+          onClick={onConfirm}
+          color="primary"
+          fullWidth>
           Remove
         </Button>
       </DialogActions>

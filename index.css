@@ -3,3 +3,8 @@
   margin: 0;
   padding: 0;
 }
+
+/* Choose services button width */
+.css-1plgf17-MuiTypography-root{
+  width: 100%;
+}

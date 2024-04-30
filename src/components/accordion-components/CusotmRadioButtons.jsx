@@ -17,13 +17,16 @@ export default function CusotmRadioButtons({
       name="choose-a-service-radio-group"
       // defaultValue={radioButtonData[0].name} // Set the default value based on your data
       sx={{
-        marginLeft: 1.5,
+        marginX: 1.5,
         flexDirection: "row",
         gap: 2,
-      }}
-    >
+        minWidth: { xs: "100%", sm: "100%", md: 180 },
+      }}>
       {radioButtonData.map((value) => (
         <FormControlLabel
+          sx={{
+            width: { xs: "100%", sm: 180, md: 180 }, // Set width for xs, sm and md screens
+          }}
           value={value.name}
           key={value.name}
           onChange={() => handleSelection(value)}
@@ -40,6 +43,7 @@ export default function CusotmRadioButtons({
                 "&.Mui-checked + .MuiFormControlLabel-label > .icon": {
                   display: "block",
                 },
+                width: { xs: "100%", sm: "100%", md: 180 },
               }}
             />
           }
@@ -51,16 +55,23 @@ export default function CusotmRadioButtons({
                 border: 0.8,
                 boxShadow: "sm",
                 display: "flex",
-                flexDirection: "column",
+                flexDirection: { xs: "row", sm: "column", md: "column" },
                 alignItems: "center",
                 // gap: 1.5,
                 // minWidth: 180,
-                minWidth: { xs: "100%", sm: "100%", md: 180 },
+                width: { xs: "100%", sm: "100%", md: 180 },
               }}
-              variant="outlined"
-            >
-              <img width={80} alt={value.name} src={`/images/${value.icon}`} />
-              <Box sx={{ pt: 2 }}>
+              variant="outlined">
+              <img
+                width={80}
+                alt={value.name}
+                src={`/src/images/${value.icon}`}
+              />
+              <Box
+                sx={{
+                  pt: { xs: 0, sm: 2, md: 2 },
+                  width: { xs: "100%", sm: "100%", md: 180 },
+                }}>
                 <Typography variant="body1" sx={{ textAlign: "center" }}>
                   {value.name}
                 </Typography>
@@ -70,9 +81,6 @@ export default function CusotmRadioButtons({
               </Box>
             </Box>
           }
-          sx={{
-            width: { xs: "100%", sm: "100%" }, // Set width to 100% on xs and sm screens
-          }}
         />
       ))}
     </RadioGroup>

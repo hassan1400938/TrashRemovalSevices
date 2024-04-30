@@ -108,9 +108,6 @@ export default function ChooseAService({
     }
   };
 
-  const handleBackMobile = () => {};
-  const handleContinueMobile = () => {};
-
   return (
     <Box>
       <Typography variant="subtitle1">What do you need?</Typography>
@@ -121,26 +118,6 @@ export default function ChooseAService({
       <Hidden mdDown>
         <Box sx={{ display: "flex", justifyContent: "end" }}>
           <Button variant="contained" size="large" onClick={handleContinue}>
-            Continue
-          </Button>
-        </Box>
-      </Hidden>
-      <Hidden mdUp>
-        <Box sx={{ display: "flex", marginTop: 2 }}>
-          <Button
-            variant="outlined"
-            sx={{ width: "50%", marginRight: 0.5 }}
-            size="large"
-            onClick={handleBackMobile}
-          >
-            Back
-          </Button>
-          <Button
-            variant="contained"
-            sx={{ width: "50%", marginLeft: 0.5 }}
-            size="large"
-            onClick={handleContinueMobile}
-          >
             Continue
           </Button>
         </Box>

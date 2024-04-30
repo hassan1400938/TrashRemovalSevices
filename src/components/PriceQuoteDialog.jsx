@@ -7,8 +7,8 @@ import PriceQuote from "./PriceQuote";
 
 export default function PriceQuoteDialog({ formData, updateFormData }) {
   const theme = useTheme();
-
   const [open, setOpen] = React.useState(false);
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -26,8 +26,10 @@ export default function PriceQuoteDialog({ formData, updateFormData }) {
           display: "flex",
           padding: 2,
           cursor: "pointer",
-        }}
-      >
+          position: "-webkit-sticky",
+          position: "sticky",
+          top: 4,
+        }}>
         <Typography variant="subtitle1">Total</Typography>
         <Typography variant="subtitle1" flexGrow={1} textAlign="right">
           ${formData.data.price_quote.grand_total.toFixed(2)}
@@ -43,8 +45,7 @@ export default function PriceQuoteDialog({ formData, updateFormData }) {
             handleClose();
           },
         }}
-        fullWidth
-      >
+        fullWidth>
         <DialogContent sx={{ p: 0 }}>
           <PriceQuote formData={formData} updateFormData={updateFormData} />
         </DialogContent>

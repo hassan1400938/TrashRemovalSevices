@@ -8,6 +8,7 @@ import {
   RadioGroup,
   FormControlLabel,
   Checkbox,
+  Hidden,
 } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import BusinessIcon from "@mui/icons-material/Business";
@@ -115,8 +116,7 @@ export default function ReviewOrderAddress({
         aria-labelledby="address-type-radio-group"
         name="address-type-radio-group"
         value={priceQuoteAddress.address_type}
-        onChange={handleAddressTypeChange}
-      >
+        onChange={handleAddressTypeChange}>
         <Box my={2}>
           <FormControlLabel
             value="Residential"
@@ -142,7 +142,7 @@ export default function ReviewOrderAddress({
       </RadioGroup>
 
       {/* Address Fields */}
-      <Box width="75%">
+      <Box width={{ xs: "100%", sm: "100%", md: "75%" }}>
         {/* If select Business */}
         {showBusinessAddress && (
           <TextField
@@ -246,11 +246,13 @@ export default function ReviewOrderAddress({
           Need help? We are here for you! You can chat with us here.
         </Typography>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "end" }}>
-        <Button variant="contained" size="large" onClick={handleContinue}>
-          Continue
-        </Button>
-      </Box>
+      <Hidden mdDown>
+        <Box sx={{ display: "flex", justifyContent: "end" }}>
+          <Button variant="contained" size="large" onClick={handleContinue}>
+            Continue
+          </Button>
+        </Box>
+      </Hidden>
     </Box>
   );
 }

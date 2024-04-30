@@ -90,8 +90,7 @@ export default React.memo(function PriceQuote({ formData, updateFormData }) {
     <Box
       sx={{
         backgroundColor: theme.palette.primary.light,
-      }}
-    >
+      }}>
       <Box sx={{ p: { xs: 1, sm: 1, md: 3.5 } }}>
         <Typography variant="h2">Price Quote</Typography>
         <Box sx={{ my: 2 }}>
@@ -157,7 +156,6 @@ export default React.memo(function PriceQuote({ formData, updateFormData }) {
               `${priceQuoteAddress.postal_code}.`}
           </Typography>
         </Box>
-
         {/*Grand Total  */}
         <Grid container>
           <Grid item xs={6}>

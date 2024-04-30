@@ -2,7 +2,7 @@ import React from "react";
 import data from "./data";
 import BookingProcess from "./components/BookingProcess";
 import PriceQuote from "./components/PriceQuote";
-import { Box, Typography, Grid, Hidden } from "@mui/material";
+import { Box, Typography, Grid, Hidden, Link } from "@mui/material";
 import ResponsiveAppBar from "./components/ResponsiveAppBar";
 import BookingProgress from "./components/BookingProgress";
 import MobileBookingProcess from "./components/MobileBookingProcess";
@@ -19,11 +19,17 @@ function App() {
       <Box
         sx={{
           minHeight: "100vh",
-        }}
-      >
+        }}>
         <ResponsiveAppBar />
         <Hidden mdUp>
-          <BookingProgress formData={formData} />
+          <Box
+            sx={{
+              position: { xs: "-webkit-sticky", sm: "-webkit-sticky" },
+              position: { xs: "sticky", sm: "sticky" },
+              top: { xs: 0, sm: 0 },
+            }}>
+            <BookingProgress formData={formData} />
+          </Box>
           <PriceQuoteDialog
             formData={formData}
             updateFormData={updateFormData}
@@ -41,8 +47,7 @@ function App() {
               xs={12}
               sm={12}
               md={8}
-              sx={{ order: { xs: 2, sm: 2, md: 1 } }}
-            >
+              sx={{ order: { xs: 2, sm: 2, md: 1 } }}>
               <Hidden mdDown>
                 <BookingProcess
                   formData={formData}
@@ -55,35 +60,49 @@ function App() {
                   updateFormData={updateFormData}
                 />
               </Hidden>
-              <Box>
-                <Typography sx={{ mt: 3, fontSize: "0.6em" }} variant="body2">
-                  Powered by RIXOSOL
-                </Typography>
-              </Box>
             </Grid>
             <Grid
               item
               xs={12}
               sm={12}
               md={4}
-              sx={{ order: { xs: 1, sm: 1, md: 2 } }}
-            >
-              <Hidden mdDown>
-                <Typography variant="body2">Your Progress</Typography>
-                <Box py={2}>
-                  <BookingProgress formData={formData} />
-                </Box>
-              </Hidden>
-              <Hidden mdDown>
-                <PriceQuote
-                  formData={formData}
-                  updateFormData={updateFormData}
-                />
-              </Hidden>
+              sx={{ order: { xs: 1, sm: 1, md: 2 } }}>
+              <Box>
+                <Hidden mdDown>
+                  <Typography variant="body2">Your Progress</Typography>
+                  <Box py={2}>
+                    <BookingProgress formData={formData} />
+                  </Box>
+                </Hidden>
+                <Hidden mdDown>
+                  <PriceQuote
+                    formData={formData}
+                    updateFormData={updateFormData}
+                  />
+                </Hidden>
+              </Box>
               {console.log(formData.data.price_quote)}
               {console.log(formData.data.form_disabled)}
             </Grid>
           </Grid>
+
+          <Box>
+            <Typography
+              sx={{
+                mt: 3,
+                fontSize: "0.6em",
+                textAlign: "center",
+              }}
+              variant="body2">
+              Powered by{" "}
+              <Link
+                href="https://rixosol.com"
+                underline="hover"
+                target="_blank">
+                Rixosol
+              </Link>
+            </Typography>
+          </Box>
         </Box>
       </Box>
     </React.Fragment>

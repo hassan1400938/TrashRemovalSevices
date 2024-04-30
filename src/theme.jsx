@@ -48,6 +48,7 @@ const theme = createTheme({
     subtitle1: {
       fontSize: "1.2em",
       fontWeight: 900,
+      lineHeight: "1.5em",
     },
     // fontSize: 16, // Change the default font size
   },

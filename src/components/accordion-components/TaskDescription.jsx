@@ -7,6 +7,7 @@ import {
   ListItem,
   ListItemText,
   TextField,
+  Hidden,
 } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import AddItemDialog from "./AddItemDialog";
@@ -237,7 +238,7 @@ export default function TaskDescription({
           be a 10% service fee.
         </Typography>
       </Box>
-      <Box sx={{ width: "75%", mt: 3 }}>
+      <Box sx={{ width: { xs: "100%", sm: "100%", md: "75%" }, mt: 3 }}>
         <Typography
           variant="body2"
           sx={{
@@ -249,14 +250,15 @@ export default function TaskDescription({
             color: theme.palette.primary.dark,
             fontWeight: 900,
             textAlign: "center",
-          }}
-        >
+          }}>
           Your provider will only collects items you have added here.
         </Typography>
       </Box>
       {/* Add additionalItems */}
       <Box>
-        <List dense={dense} sx={{ width: "75%" }}>
+        <List
+          dense={dense}
+          sx={{ width: { xs: "100%", sm: "100%", md: "75%" } }}>
           {formData.data.price_quote.tasks.additional_items.map(
             (item, index) => (
               <ListItem
@@ -266,6 +268,9 @@ export default function TaskDescription({
                   borderRadius: 1,
                   my: 1,
                   fontSize: "0.8em",
+                  display: "flex",
+                  flexDirection: { xs: "column", sm: "row", md: "row" },
+                  alignItems: "flex-start",
                 }}
                 key={index}
                 secondaryAction={
@@ -277,12 +282,8 @@ export default function TaskDescription({
                     }
                     removeItemFromList={removeItemFromList}
                   />
-                }
-              >
-                <ListItemText
-                  primary={item.item_name}
-                  sx={{ width: "40%", flexShrink: 0 }}
-                />
+                }>
+                <ListItemText primary={item.item_name} sx={{ flexGrow: 1 }} />
                 <ListItemText
                   primary={
                     item.price
@@ -296,14 +297,13 @@ export default function TaskDescription({
         </List>
 
         {/* Open Dialog Button to choose Additional Items*/}
-        <Box sx={{ width: "75%" }}>
+        <Box sx={{ width: { xs: "100%", sm: "100%", md: "75%" } }}>
           <Button
             fullWidth
             variant="outlined"
             sx={{ minHeight: "60px" }}
             endIcon={<AddCircleIcon />}
-            onClick={handleClickOpenItemListDialog}
-          >
+            onClick={handleClickOpenItemListDialog}>
             Add Item
           </Button>
           <AddItemDialog
@@ -336,7 +336,10 @@ export default function TaskDescription({
           required
           multiline
           minRows={5}
-          sx={{ width: "75%", p: 3 }}
+          sx={{
+            width: { xs: "100%", sm: "100%", md: "75%" },
+            p: { xs: 0, sm: 0, md: 3 },
+          }}
           placeholder='For example, "1x king-sized mattress that will be located inside the garage", "4x trash bags of food, cardboard, and general house trash will be located on the front lawn.
             
 Note: Items you wish to be removed must be itemized and added to the dropdown list of "pickup type" above. If you cannot find an item from the dropdown list, please choose "unlisted" in the dropdown menu, and describe them in this box.'
@@ -369,12 +372,16 @@ Note: Items you wish to be removed must be itemized and added to the dropdown li
       <Typography variant="body2" my={2}>
         Need help? We are here for you! You can chat with us here.
       </Typography>
-
-      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button variant="contained" size="large" onClick={handleContinueClick}>
-          Continue
-        </Button>
-      </Box>
+      <Hidden mdDown>
+        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={handleContinueClick}>
+            Continue
+          </Button>
+        </Box>
+      </Hidden>
     </Box>
   );
 }

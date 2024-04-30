@@ -7,6 +7,7 @@ import {
   MenuItem,
   InputLabel,
   Button,
+  Hidden,
 } from "@mui/material";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { MobileDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
@@ -147,11 +148,16 @@ export default function DateTime({ formData, updateFormData, onContinue }) {
           Need help? We are here for you! You can chat with us here.
         </Typography>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button variant="contained" size="large" onClick={handleContinueClick}>
-          Continue
-        </Button>
-      </Box>
+      <Hidden mdDown>
+        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={handleContinueClick}>
+            Continue
+          </Button>
+        </Box>
+      </Hidden>
     </LocalizationProvider>
   );
 }

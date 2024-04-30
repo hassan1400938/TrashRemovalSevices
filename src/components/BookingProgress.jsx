@@ -27,7 +27,13 @@ export default function BookingProgress({ formData }) {
   }, [formData.data.form_disabled]);
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box
+      sx={{
+        width: "100%",
+        position: "-webkit-sticky",
+        position: "sticky",
+        top: 0,
+      }}>
       <LinearProgress
         sx={{
           minHeight: { xs: "2px", sm: "2px", md: "18px" },
