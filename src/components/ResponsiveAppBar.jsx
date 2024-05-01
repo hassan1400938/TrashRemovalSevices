@@ -15,7 +15,7 @@ function ResponsiveAppBar() {
           {/* Logo */}
           <img
             alt={theme.site.name}
-            src={`/${theme.site.logo}`}
+            src={`/TrashRemovalServices/${theme.site.logo}`}
             width="130px"
             sx={{ flexGrow: 1 }}
           />

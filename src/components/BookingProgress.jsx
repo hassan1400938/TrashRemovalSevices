@@ -38,6 +38,7 @@ export default function BookingProgress({ formData }) {
         sx={{
           minHeight: { xs: "2px", sm: "2px", md: "18px" },
           borderRadius: "5px",
+          zIndex: 999,
         }}
         variant="determinate"
         value={progress}

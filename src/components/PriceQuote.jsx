@@ -89,7 +89,7 @@ export default React.memo(function PriceQuote({ formData, updateFormData }) {
   return (
     <Box
       sx={{
-        backgroundColor: theme.palette.primary.light,
+        backgroundColor: { md: theme.palette.primary.light },
       }}>
       <Box sx={{ p: { xs: 1, sm: 1, md: 3.5 } }}>
         <Typography variant="h2">Price Quote</Typography>

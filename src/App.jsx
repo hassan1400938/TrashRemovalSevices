@@ -90,7 +90,7 @@ function App() {
             <Typography
               sx={{
                 mt: 3,
-                fontSize: "0.6em",
+                fontSize: "0.8em",
                 textAlign: "center",
               }}
               variant="body2">

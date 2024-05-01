@@ -19,6 +19,10 @@ export default function PriceQuoteDialog({ formData, updateFormData }) {
 
   return (
     <React.Fragment>
+      <Box sx={{ display: "none" }}>
+        <PriceQuote formData={formData} updateFormData={updateFormData} />
+      </Box>
+
       <Box
         onClick={handleClickOpen}
         sx={{
@@ -29,6 +33,7 @@ export default function PriceQuoteDialog({ formData, updateFormData }) {
           position: "-webkit-sticky",
           position: "sticky",
           top: 4,
+          zIndex: 999,
         }}>
         <Typography variant="subtitle1">Total</Typography>
         <Typography variant="subtitle1" flexGrow={1} textAlign="right">
