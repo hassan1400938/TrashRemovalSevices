@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Choose services button width */
+.MuiFormControlLabel-label{
+  width: 100%;
+}
+
+/* Loader */
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 24px;
+}
+
+.react-router-link{
+  text-decoration: none;
+  /* justify-content: center;
+  align-items: center; */
+}

@@ -15,11 +15,22 @@ import HelpIcon from "@mui/icons-material/Help";
 import MailIcon from "@mui/icons-material/Mail";
 import { useTheme } from "@emotion/react";
 
+import { Link } from "react-router-dom";
+
 const menuItems = [
-  { text: "Home", icon: <HomeIcon />, link: "https://amphaul.com/" },
+  { text: "Home", icon: <HomeIcon />, link: "/trash-removal-services/" },
   // { text: "About", icon: <InfoIcon />, link: "https://amphaul.com/about" },
-  { text: "FAQs", icon: <HelpIcon />, link: "https://amphaul.com/faq" },
-  { text: "Contact", icon: <MailIcon />, link: "https://amphaul.com/#contact" },
+  { text: "FAQs", icon: <HelpIcon />, link: "/trash-removal-services/faqs" },
+  {
+    text: "Contact",
+    icon: <MailIcon />,
+    link: "/trash-removal-services/contact",
+  },
+  {
+    text: "Booking",
+    icon: <MailIcon />,
+    link: "/trash-removal-services/booking",
+  },
 ];
 
 export default function MenuDrawer() {
@@ -50,27 +61,22 @@ export default function MenuDrawer() {
       }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
+      onKeyDown={toggleDrawer(anchor, false)}>
       <List>
         {menuItems.map((item, index) => (
           <ListItem key={item.text} disablePadding>
-            <ListItemButton
-              component="a"
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ListItemIcon sx={{ color: theme.palette.primary.main }}>
-                {item.icon}
-              </ListItemIcon>
-              <Typography
-                variant="body1"
-                sx={{ color: theme.palette.primary.main }}
-              >
-                <ListItemText primary={item.text} />
-              </Typography>
-            </ListItemButton>
+            <Link to={item.link} className="react-router-link">
+              <ListItemButton>
+                <ListItemIcon sx={{ color: theme.palette.primary.main }}>
+                  {item.icon}
+                </ListItemIcon>
+                <Typography
+                  variant="body1"
+                  sx={{ color: theme.palette.primary.main }}>
+                  <ListItemText primary={item.text} />
+                </Typography>
+              </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>
@@ -87,15 +93,13 @@ export default function MenuDrawer() {
           aria-controls="menu-appbar"
           aria-haspopup="true"
           onClick={toggleDrawer("right", true)}
-          color="inherit"
-        >
+          color="inherit">
           <MenuIcon />
         </IconButton>
         <Drawer
           anchor="right"
           open={state["right"]}
-          onClose={toggleDrawer("right", false)}
-        >
+          onClose={toggleDrawer("right", false)}>
           {list("right")}
         </Drawer>
       </React.Fragment>

@@ -28,7 +28,7 @@ export default function MobileBookingProcess({ formData, updateFormData }) {
         setCurrentStep(nextStep);
       } else {
         // Handle the case where the next step is disabled
-        alert("Please complete the current step before proceeding.");
+        // alert("Please complete the current step before proceeding.");
       }
     }
   };

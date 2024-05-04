@@ -24,6 +24,7 @@
     "react-dom": "^18.2.0",
     "react-imask": "^7.3.0",
     "react-places-autocomplete": "^7.3.0",
+    "react-router-dom": "^6.23.0",
     "stripe": "^14.13.0"
   },
   "devDependencies": {
