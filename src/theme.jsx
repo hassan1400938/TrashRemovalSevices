@@ -1,18 +1,19 @@
 import { createTheme, alpha, getContrastRatio } from "@mui/material/styles";
 
-const [gambogeBase, gambogeLightest, gambogeLight, gambogeMainD, gambogeDark] =
+const [gambogeBase, gambogeLightest, gambogeLight, gambogeBaseD, gambogeDark] =
   ["#E8A901", "#fcf6e5", "#f4db95", "#E8A901", "#a27600"];
-const gambogeMain = alpha(gambogeBase, 0.8);
+// const gambogeMain = alpha(gambogeBase, 0.8);
 
 const theme = createTheme({
   palette: {
     primary: {
       lightest: gambogeLightest,
       light: gambogeLight,
-      main: gambogeMain,
-      dark: gambogeMainD,
+      main: gambogeBase,
+      dark: gambogeBaseD,
+      white: "#fff",
       contrastText:
-        getContrastRatio(gambogeBase, "#fff") > 4.5 ? "#fff" : "#111",
+        getContrastRatio(gambogeBase, "#fff") > 4.5 ? "#fff" : "#000",
     },
     secondary: {
       main: "#f50057", // Change the secondary color
@@ -22,11 +23,13 @@ const theme = createTheme({
     // fontFamily: ["Montserrat", "sans-serif"].join(","),
     fontFamily: "Nunito Sans", //400, 700, 900, 1000
     h1: {
-      fontSize: { xs: "0.2em", sm: "0.2em", md: "2.25em" },
+      fontSize: "3em",
+      // fontSize: { xs: "0.2em", sm: "0.2em", md: "70px", lg: "5em" },
       fontWeight: 1000,
     },
     h2: {
-      fontSize: { xs: "0.1em", sm: "1.75em" },
+      fontSize: "2.5em",
+      // fontSize: { xs: "0.1em", sm: "1.75em" },
       fontWeight: 1000,
     },
     h3: {
@@ -34,7 +37,7 @@ const theme = createTheme({
       fontWeight: 900,
     },
     h4: {
-      fontSize: "1.2em",
+      // fontSize: "1.2em",
       fontWeight: 700,
     },
     body1: {
@@ -47,8 +50,13 @@ const theme = createTheme({
     },
     subtitle1: {
       fontSize: "1.2em",
-      fontWeight: 900,
-      lineHeight: "1.5em",
+      fontWeight: 600,
+      lineHeight: "1.2em",
+    },
+    subtitle2: {
+      fontSize: "1.2em",
+      fontWeight: 400,
+      lineHeight: "1.2em",
     },
     // fontSize: 16, // Change the default font size
   },
@@ -75,7 +83,7 @@ const theme = createTheme({
     MuiPickersToolbar: {
       styleOverrides: {
         root: {
-          color: gambogeMainD,
+          color: gambogeBaseD,
           borderRadius: 0,
           borderWidth: 0,
           borderColor: "green",
@@ -100,15 +108,15 @@ const theme = createTheme({
           padding: "16px 42px",
         },
         outlined: {
-          color: gambogeMainD,
-          borderColor: gambogeMain,
+          color: gambogeBaseD,
+          borderColor: gambogeBase,
           "&:hover": {
             color: gambogeDark, // Change the text color on hover for outlined buttons
           },
         },
         text: {
           fontWeight: 700,
-          color: gambogeMainD,
+          color: gambogeBaseD,
           backgroundColor: gambogeLightest,
           "&:hover": {
             color: gambogeDark, // Change the text color on hover for outlined buttons

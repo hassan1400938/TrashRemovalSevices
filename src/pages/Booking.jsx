@@ -8,6 +8,7 @@ import PriceQuoteDialog from "../components/PriceQuoteDialog";
 import Loader from "../components/Loader";
 
 import data from "../data";
+import ResponsiveAppBar from "../components/ResponsiveAppBar";
 
 export default function Booking() {
   const [formData, setFormData] = React.useState(data);
@@ -37,6 +38,9 @@ export default function Booking() {
             sx={{
               minHeight: "100vh",
             }}>
+            <header>
+              <ResponsiveAppBar />
+            </header>
             <Hidden mdUp>
               <Box
                 sx={{

@@ -5,9 +5,12 @@ import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import { useTheme } from "@emotion/react";
 import MenuDrawer from "./MenuDrawer";
+import { Button, Stack } from "@mui/material";
 
 function ResponsiveAppBar() {
   const theme = useTheme();
+  const pages = ["Products", "Pricing", "Blog"];
+
   return (
     <AppBar position="static" sx={{ bgcolor: "white", py: 2 }}>
       <Container maxWidth="xl">
@@ -21,6 +24,10 @@ function ResponsiveAppBar() {
           />
           {/* Menu */}
           <Box sx={{ display: "flex", ml: "auto" }}>
+            {/* <Stack direction="row" spacing={2} mr={3}>
+              <Button>Login</Button>
+              <Button variant="contained">Book Now</Button>
+            </Stack> */}
             <MenuDrawer />
           </Box>
         </Toolbar>

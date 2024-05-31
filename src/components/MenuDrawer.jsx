@@ -64,8 +64,8 @@ export default function MenuDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}>
       <List>
         {menuItems.map((item, index) => (
-          <ListItem key={item.text} disablePadding>
-            <Link to={item.link} className="react-router-link">
+          <Link to={item.link} className="react-router-link">
+            <ListItem key={item.text} disablePadding>
               <ListItemButton>
                 <ListItemIcon sx={{ color: theme.palette.primary.main }}>
                   {item.icon}
@@ -76,8 +76,8 @@ export default function MenuDrawer() {
                   <ListItemText primary={item.text} />
                 </Typography>
               </ListItemButton>
-            </Link>
-          </ListItem>
+            </ListItem>
+          </Link>
         ))}
       </List>
       {/* <Divider /> */}

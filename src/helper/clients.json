@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "image": "amazon.svg",
+        "title": "Amazon"
+    },
+    {
+        "id": 2,
+        "image": "burgerking.svg",
+        "title": "Burger King"
+    },
+    {
+        "id": 3,
+        "image": "imperfect.png",
+        "title": "Inperfect Foods"
+    },
+    {
+        "id": 4,
+        "image": "instacart.svg",
+        "title": "insta Cart"
+    },
+    {
+        "id": 5,
+        "image": "weee.svg",
+        "title": "Weee"
+    }
+]
