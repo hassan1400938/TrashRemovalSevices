@@ -118,7 +118,10 @@ function LandingPage() {
               nationwide. Book same day service online in minutes, or chat with
               our team to discuss customized solutions.
             </Typography>
-            <Button variant="contained" href="/booking">
+            <Button
+              variant="contained"
+              href="https://hassan1400938.github.io/trash-removal-services/booking"
+            >
               Schedule Pickup
             </Button>
           </Stack>
@@ -190,7 +193,9 @@ function LandingPage() {
                 alignItems="center"
                 spacing={2}
               >
-                <Button>Book Now</Button>
+                <Button href="https://hassan1400938.github.io/trash-removal-services/booking">
+                  Book Now
+                </Button>
                 <Button>Chat With Us</Button>
               </Stack>
             </Stack>
@@ -225,7 +230,9 @@ function LandingPage() {
                 alignItems="center"
                 spacing={2}
               >
-                <Button>Book Now</Button>
+                <Button href="https://hassan1400938.github.io/trash-removal-services/booking">
+                  Book Now
+                </Button>
                 <Button>Chat With Us</Button>
               </Stack>
             </Stack>
@@ -260,7 +267,9 @@ function LandingPage() {
                 alignItems="center"
                 spacing={2}
               >
-                <Button>Book Now</Button>
+                <Button href="https://hassan1400938.github.io/trash-removal-services/booking">
+                  Book Now
+                </Button>
                 <Button>Chat With Us</Button>
               </Stack>
             </Stack>
@@ -406,7 +415,12 @@ function LandingPage() {
                   you can easily contact us directly by SMS, call or email.
                 </Typography>
               </Stack>
-              <Button sx={{ mt: 3 }}>Try it Now!</Button>
+              <Button
+                sx={{ mt: 3 }}
+                href="https://hassan1400938.github.io/trash-removal-services/booking"
+              >
+                Try it Now!
+              </Button>
             </Box>
           </Stack>
         </Container>
@@ -531,7 +545,9 @@ function LandingPage() {
               alignItems="center"
             >
               <Stack spacing={1}>
-                <Button>Book Now</Button>
+                <Button href="https://hassan1400938.github.io/trash-removal-services/booking">
+                  Book Now
+                </Button>
                 <Button>Chat With Us</Button>
               </Stack>
             </Grid>
