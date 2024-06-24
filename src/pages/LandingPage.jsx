@@ -96,7 +96,8 @@ function LandingPage() {
           backgroundSize: "cover",
           minHeight: { xs: "50vh", sm: "50vh", md: "100vh", lg: "100vh" },
           p: 0,
-        }}>
+        }}
+      >
         <Container>
           <Stack
             sx={{
@@ -105,7 +106,8 @@ function LandingPage() {
               width: { xs: "100%", sm: "50%" },
               display: "flex",
               color: theme.palette.primary.contrastText,
-            }}>
+            }}
+          >
             <Typography variant="h1" gutterBottom>
               Fast
               <br /> Reliable <br />
@@ -116,7 +118,9 @@ function LandingPage() {
               nationwide. Book same day service online in minutes, or chat with
               our team to discuss customized solutions.
             </Typography>
-            <Button variant="contained">Schedule Pickup</Button>
+            <Button variant="contained" href="/booking">
+              Schedule Pickup
+            </Button>
           </Stack>
         </Container>
       </Box>
@@ -129,12 +133,14 @@ function LandingPage() {
           px: { xs: 2, sm: 4, md: 8 },
           backgroundColor: theme.palette.primary.main,
           minHeight: { xs: "20vh", sm: "20vh", md: "40vh" },
-        }}>
+        }}
+      >
         <Stack
           direction="column"
           justifyContent="center"
           alignItems="center"
-          spacing={2}>
+          spacing={2}
+        >
           <Stack spacing={1} alignItems="center" marginBottom="60px">
             <Typography variant="h2" gutterBottom color="#ffffff">
               Proudly Serving
@@ -158,7 +164,8 @@ function LandingPage() {
                 sx={{
                   backgroundImage: `url("images/feature-1.jpg")`,
                   height: "33.33vh",
-                }}></Box>
+                }}
+              ></Box>
             </Hidden>
             <Stack
               direction="column"
@@ -167,7 +174,8 @@ function LandingPage() {
               height={{ xs: "auto", sm: "100vh" }}
               justifyContent="center"
               textAlign={{ xs: "center", sm: "left" }}
-              ref={featureRefs.current[0]}>
+              ref={featureRefs.current[0]}
+            >
               <Typography variant="h2">Waste Management On-Demand</Typography>
               <Typography variant="body1">
                 Solve your waste management worries with the click of a button.
@@ -180,7 +188,8 @@ function LandingPage() {
                 direction={{ xs: "column", sm: "row" }}
                 justifyContent="center"
                 alignItems="center"
-                spacing={2}>
+                spacing={2}
+              >
                 <Button>Book Now</Button>
                 <Button>Chat With Us</Button>
               </Stack>
@@ -192,7 +201,8 @@ function LandingPage() {
                 sx={{
                   backgroundImage: `url("images/feature-2.jpg")`,
                   height: "33.33vh",
-                }}></Box>
+                }}
+              ></Box>
             </Hidden>
             <Stack
               direction="column"
@@ -201,7 +211,8 @@ function LandingPage() {
               height={{ xs: "auto", sm: "100vh" }}
               justifyContent="center"
               textAlign={{ xs: "center", sm: "left" }}
-              ref={featureRefs.current[1]}>
+              ref={featureRefs.current[1]}
+            >
               <Typography variant="h2">Flexible & Customizable</Typography>
               <Typography variant="body1">
                 Whether you’re scheduling a one-off pickup, searching for a
@@ -212,7 +223,8 @@ function LandingPage() {
                 direction={{ xs: "column", sm: "row" }}
                 justifyContent="center"
                 alignItems="center"
-                spacing={2}>
+                spacing={2}
+              >
                 <Button>Book Now</Button>
                 <Button>Chat With Us</Button>
               </Stack>
@@ -224,7 +236,8 @@ function LandingPage() {
                 sx={{
                   backgroundImage: `url("images/feature-3.jpg")`,
                   height: "33.33vh",
-                }}></Box>
+                }}
+              ></Box>
             </Hidden>
             <Stack
               direction="column"
@@ -233,7 +246,8 @@ function LandingPage() {
               height={{ xs: "auto", sm: "100vh" }}
               justifyContent="center"
               textAlign={{ xs: "center", sm: "left" }}
-              ref={featureRefs.current[2]}>
+              ref={featureRefs.current[2]}
+            >
               <Typography variant="h2">Efficient & Reliable</Typography>
               <Typography variant="body1">
                 Our services are designed to be both efficient and reliable,
@@ -244,7 +258,8 @@ function LandingPage() {
                 direction={{ xs: "column", sm: "row" }}
                 justifyContent="center"
                 alignItems="center"
-                spacing={2}>
+                spacing={2}
+              >
                 <Button>Book Now</Button>
                 <Button>Chat With Us</Button>
               </Stack>
@@ -263,7 +278,8 @@ function LandingPage() {
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   transition: "background-image 0.5s ease-in-out", // Smooth transition for background image
-                }}></Box>
+                }}
+              ></Box>
             </Grid>
           </Hidden>
         </Grid>
@@ -276,28 +292,33 @@ function LandingPage() {
           backgroundColor: theme.palette.primary.dark,
           color: theme.palette.primary.contrastText,
           py: { xs: 4, sm: 8, md: 12 },
-        }}>
+        }}
+      >
         <Container>
           <Stack
             direction={{ xs: "column", sm: "row" }}
-            px={{ xs: 0, sm: 4, md: 16 }}>
+            px={{ xs: 0, sm: 4, md: 16 }}
+          >
             <Hidden smDown>
               <Box
                 sx={{
                   width: { xs: "100%", sm: "33.33%" },
-                }}>
+                }}
+              >
                 <Box
                   sx={{
                     backgroundImage: `url("images/cover.jpg")`,
                     height: "100%",
-                  }}></Box>
+                  }}
+                ></Box>
               </Box>
             </Hidden>
             <Box
               sx={{
                 pl: { xs: 0, sm: 4, md: 8 },
                 width: { xs: "100%", sm: "66.66%" },
-              }}>
+              }}
+            >
               <Stack spacing={3}>
                 <Typography variant="subtitle1">How Amphaul Work</Typography>
                 <Typography variant="h2">
@@ -310,7 +331,8 @@ function LandingPage() {
                   [`& .${timelineOppositeContentClasses.root}`]: {
                     flex: 0,
                   },
-                }}>
+                }}
+              >
                 <TimelineItem>
                   <TimelineOppositeContent hidden></TimelineOppositeContent>
                   <TimelineSeparator>
@@ -328,7 +350,8 @@ function LandingPage() {
                       </Typography>
                       <Typography
                         variant="h2"
-                        color={theme.palette.primary.lightest}>
+                        color={theme.palette.primary.lightest}
+                      >
                         01
                       </Typography>
                     </Stack>
@@ -347,7 +370,8 @@ function LandingPage() {
                       </Typography>
                       <Typography
                         variant="h2"
-                        color={theme.palette.primary.lightest}>
+                        color={theme.palette.primary.lightest}
+                      >
                         02
                       </Typography>
                     </Stack>
@@ -365,7 +389,8 @@ function LandingPage() {
                       </Typography>
                       <Typography
                         variant="h2"
-                        color={theme.palette.primary.lightest}>
+                        color={theme.palette.primary.lightest}
+                      >
                         03
                       </Typography>
                     </Stack>
@@ -390,12 +415,14 @@ function LandingPage() {
       {/* Testimonial Section */}
       <Box
         component="section"
-        sx={{ backgroundColor: theme.palette.primary.light }}>
+        sx={{ backgroundColor: theme.palette.primary.light }}
+      >
         <Container>
           <Stack
             direction={{ xs: "column", sm: "row" }}
             sx={{ py: { xs: 4, sm: 8, md: 12 } }}
-            spacing={3}>
+            spacing={3}
+          >
             {/* Review 1 */}
             <Stack
               spacing={3}
@@ -403,7 +430,8 @@ function LandingPage() {
                 backgroundColor: theme.palette.primary.main,
                 p: 4,
                 borderRadius: 2,
-              }}>
+              }}
+            >
               <Box>
                 {Array.from({ length: 5 }, (_, i) => (
                   <span key={i}>
@@ -424,7 +452,8 @@ function LandingPage() {
                 backgroundColor: theme.palette.primary.main,
                 p: 4,
                 borderRadius: 2,
-              }}>
+              }}
+            >
               <Box>
                 {Array.from({ length: 5 }, (_, i) => (
                   <span key={i}>
@@ -445,7 +474,8 @@ function LandingPage() {
                 backgroundColor: theme.palette.primary.main,
                 p: 4,
                 borderRadius: 2,
-              }}>
+              }}
+            >
               <Box>
                 {Array.from({ length: 5 }, (_, i) => (
                   <span key={i}>
@@ -471,16 +501,19 @@ function LandingPage() {
         component="footer"
         sx={{
           backgroundColor: theme.palette.primary.main,
-        }}>
+        }}
+      >
         <Container
           sx={{
             px: { sm: 4, md: 16 },
             py: { xs: 4, sm: 8, md: 12 },
-          }}>
+          }}
+        >
           <Grid
             container
             spacing={3}
-            sx={{ textAlign: { xs: "center", sm: "left" } }}>
+            sx={{ textAlign: { xs: "center", sm: "left" } }}
+          >
             <Grid item xs={12} sm={6}>
               <Stack spacing={3}>
                 <Typography variant="subtitle1">Let's Get Started</Typography>
@@ -495,7 +528,8 @@ function LandingPage() {
               sm={6}
               display="flex"
               justifyContent="center"
-              alignItems="center">
+              alignItems="center"
+            >
               <Stack spacing={1}>
                 <Button>Book Now</Button>
                 <Button>Chat With Us</Button>
@@ -507,7 +541,8 @@ function LandingPage() {
         <Container
           sx={{
             py: { xs: 4, sm: 8, md: 12 },
-          }}>
+          }}
+        >
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12} md={4}>
               <Stack spacing={4}>
@@ -561,7 +596,8 @@ function LandingPage() {
         </Container>
         <Typography
           variant="body1"
-          xs={{ pb: 4, textAlign: { xs: "left", sm: "center" } }}>
+          xs={{ pb: 4, textAlign: { xs: "left", sm: "center" } }}
+        >
           © 2024 Amhaul. All rights reserved.
         </Typography>
       </Box>
