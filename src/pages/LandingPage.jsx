@@ -120,7 +120,7 @@ function LandingPage() {
             </Typography>
             <Button
               variant="contained"
-              href="https://hassan1400938.github.io/trash-removal-services/booking"
+              href="/booking"
             >
               Schedule Pickup
             </Button>
@@ -193,7 +193,7 @@ function LandingPage() {
                 alignItems="center"
                 spacing={2}
               >
-                <Button href="https://hassan1400938.github.io/trash-removal-services/booking">
+                <Button href="/booking">
                   Book Now
                 </Button>
                 <Button>Chat With Us</Button>
@@ -230,7 +230,7 @@ function LandingPage() {
                 alignItems="center"
                 spacing={2}
               >
-                <Button href="https://hassan1400938.github.io/trash-removal-services/booking">
+                <Button href="/booking">
                   Book Now
                 </Button>
                 <Button>Chat With Us</Button>
@@ -267,7 +267,7 @@ function LandingPage() {
                 alignItems="center"
                 spacing={2}
               >
-                <Button href="https://hassan1400938.github.io/trash-removal-services/booking">
+                <Button href="/booking">
                   Book Now
                 </Button>
                 <Button>Chat With Us</Button>
@@ -417,7 +417,7 @@ function LandingPage() {
               </Stack>
               <Button
                 sx={{ mt: 3 }}
-                href="https://hassan1400938.github.io/trash-removal-services/booking"
+                href="/booking"
               >
                 Try it Now!
               </Button>
@@ -545,7 +545,7 @@ function LandingPage() {
               alignItems="center"
             >
               <Stack spacing={1}>
-                <Button href="https://hassan1400938.github.io/trash-removal-services/booking">
+                <Button href="/booking">
                   Book Now
                 </Button>
                 <Button>Chat With Us</Button>
@@ -612,7 +612,7 @@ function LandingPage() {
         </Container>
         <Typography
           variant="body1"
-          xs={{ pb: 4, textAlign: { xs: "left", sm: "center" } }}
+          sx={{ p: {xs:2, sm:4}, textAlign: { xs: "left", sm: "center" } }}
         >
           © 2024 Amhaul. All rights reserved.
         </Typography>

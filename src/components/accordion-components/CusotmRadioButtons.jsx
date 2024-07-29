@@ -65,7 +65,7 @@ export default function CusotmRadioButtons({
               <img
                 width={80}
                 alt={value.name}
-                src={`/trash-removal-services/images/${value.icon}`}
+                src={`/images/${value.icon}`}
               />
               <Box
                 sx={{

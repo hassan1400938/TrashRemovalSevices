@@ -18,18 +18,18 @@ import { useTheme } from "@emotion/react";
 import { Link } from "react-router-dom";
 
 const menuItems = [
-  { text: "Home", icon: <HomeIcon />, link: "/trash-removal-services/" },
+  { text: "Home", icon: <HomeIcon />, link: "/" },
   // { text: "About", icon: <InfoIcon />, link: "https://amphaul.com/about" },
-  { text: "FAQs", icon: <HelpIcon />, link: "/trash-removal-services/faqs" },
+  { text: "FAQs", icon: <HelpIcon />, link: "/" },
   {
     text: "Contact",
     icon: <MailIcon />,
-    link: "/trash-removal-services/contact",
+    link: "/",
   },
   {
     text: "Booking",
     icon: <MailIcon />,
-    link: "/trash-removal-services/booking",
+    link: "/booking",
   },
 ];
 

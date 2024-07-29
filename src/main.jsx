@@ -10,15 +10,15 @@ import Booking from "./pages/Booking.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/trash-removal-services/",
+    path: "/",
     element: <App />,
     children: [
       {
-        path: "/trash-removal-services/",
+        path: "/",
         element: <LandingPage />,
       },
       {
-        path: "/trash-removal-services/booking",
+        path: "/booking",
         element: <Booking />,
       },
     ],

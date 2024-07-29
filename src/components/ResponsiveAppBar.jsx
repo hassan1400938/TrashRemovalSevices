@@ -16,12 +16,14 @@ function ResponsiveAppBar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* Logo */}
+          <a href="/">
           <img
             alt={theme.site.name}
-            src={`/trash-removal-services/${theme.site.logo}`}
+            src={`/${theme.site.logo}`}
             width="130px"
             sx={{ flexGrow: 1 }}
-          />
+            />
+            </a>
           {/* Menu */}
           <Box sx={{ display: "flex", ml: "auto" }}>
             {/* <Stack direction="row" spacing={2} mr={3}>
