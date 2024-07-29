@@ -121,6 +121,7 @@ function LandingPage() {
             <Button
               variant="contained"
               href="/booking"
+              onClick={()=>{console.log("I clicked on book now button")}}
             >
               Schedule Pickup
             </Button>
