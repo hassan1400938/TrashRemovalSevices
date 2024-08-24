@@ -89,6 +89,7 @@ function LandingPage() {
         component="section"
         sx={{
           display: "flex",
+          position:"relative",
           justifyContent: "center",
           alignItems: "center",
           backgroundImage: "url('images/cover.jpg')",
@@ -96,6 +97,20 @@ function LandingPage() {
           backgroundSize: "cover",
           minHeight: { xs: "50vh", sm: "50vh", md: "100vh", lg: "100vh" },
           p: 0,
+          "&::after": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.3)", // Black color with 30% opacity
+            zIndex: 1, // Ensure the overlay is on top of the background image
+          },
+          "& > *": {
+            position: "relative",
+            zIndex: 2, // Ensure content is above the overlay
+          },
         }}
       >
         <Container>
@@ -108,20 +123,37 @@ function LandingPage() {
               color: theme.palette.primary.contrastText,
             }}
           >
-            <Typography variant="h1" gutterBottom>
+            <Typography
+              variant="h1"
+              gutterBottom
+              sx={{ color: theme.palette.primary.white }}
+            >
               Fast
-              <br /> Reliable <br />
+              <br />
+              <Box component="span" sx={{ color: theme.palette.primary.lightest }}>
+                Reliable
+              </Box>
+              <br />
+              <Box component="span" sx={{ color: theme.palette.primary.light }}>
               Sustainable
+              </Box>
             </Typography>
-            <Typography variant="body1" paragraph>
-              Amphaul is the all-in-one solution for waste management,
+            <Typography
+              variant="body1"
+              paragraph
+              sx={{ color: theme.palette.primary.white }}
+            >
+              Junk Booking Pro is the all-in-one solution for waste management,
               nationwide. Book same day service online in minutes, or chat with
               our team to discuss customized solutions.
             </Typography>
             <Button
               variant="contained"
               href="/booking"
-              onClick={()=>{console.log("I clicked on book now button")}}
+              sx={{padding:"14px 24px", backgroundColor:theme.palette.primary.green}}
+              onClick={() => {
+                console.log("I clicked on book now button");
+              }}
             >
               Schedule Pickup
             </Button>
@@ -180,7 +212,7 @@ function LandingPage() {
               textAlign={{ xs: "center", sm: "left" }}
               ref={featureRefs.current[0]}
             >
-              <Typography variant="h2">Waste Management On-Demand</Typography>
+              <Typography variant="h2" sx={{color: theme.palette.primary.green}}>Waste Management On-Demand</Typography>
               <Typography variant="body1">
                 Solve your waste management worries with the click of a button.
                 Our fully digital service makes it simple to organize
@@ -190,13 +222,11 @@ function LandingPage() {
               </Typography>
               <Stack
                 direction={{ xs: "column", sm: "row" }}
-                justifyContent="center"
+                justifyContent="start"
                 alignItems="center"
                 spacing={2}
               >
-                <Button href="/booking">
-                  Book Now
-                </Button>
+                <Button href="/booking" variant="contained"> Book Now</Button>
                 <Button>Chat With Us</Button>
               </Stack>
             </Stack>
@@ -219,7 +249,7 @@ function LandingPage() {
               textAlign={{ xs: "center", sm: "left" }}
               ref={featureRefs.current[1]}
             >
-              <Typography variant="h2">Flexible & Customizable</Typography>
+              <Typography variant="h2" sx={{color: theme.palette.primary.green}}>Flexible & Customizable</Typography>
               <Typography variant="body1">
                 Whether you’re scheduling a one-off pickup, searching for a
                 reliable regular provider or solving a waste emergency, we’ll
@@ -227,13 +257,11 @@ function LandingPage() {
               </Typography>
               <Stack
                 direction={{ xs: "column", sm: "row" }}
-                justifyContent="center"
+                justifyContent="start"
                 alignItems="center"
                 spacing={2}
               >
-                <Button href="/booking">
-                  Book Now
-                </Button>
+                <Button href="/booking" variant="contained">Book Now</Button>
                 <Button>Chat With Us</Button>
               </Stack>
             </Stack>
@@ -256,7 +284,7 @@ function LandingPage() {
               textAlign={{ xs: "center", sm: "left" }}
               ref={featureRefs.current[2]}
             >
-              <Typography variant="h2">Efficient & Reliable</Typography>
+              <Typography variant="h2" sx={{color: theme.palette.primary.green}}>Efficient & Reliable</Typography>
               <Typography variant="body1">
                 Our services are designed to be both efficient and reliable,
                 ensuring that your waste management needs are met with
@@ -264,13 +292,11 @@ function LandingPage() {
               </Typography>
               <Stack
                 direction={{ xs: "column", sm: "row" }}
-                justifyContent="center"
+                justifyContent="start"
                 alignItems="center"
                 spacing={2}
               >
-                <Button href="/booking">
-                  Book Now
-                </Button>
+                <Button href="/booking" variant="contained">Book Now</Button>
                 <Button>Chat With Us</Button>
               </Stack>
             </Stack>
@@ -300,7 +326,7 @@ function LandingPage() {
         component="section"
         sx={{
           backgroundColor: theme.palette.primary.dark,
-          color: theme.palette.primary.contrastText,
+          color: theme.palette.primary.white,
           py: { xs: 4, sm: 8, md: 12 },
         }}
       >
@@ -330,8 +356,8 @@ function LandingPage() {
               }}
             >
               <Stack spacing={3}>
-                <Typography variant="subtitle1">How Amphaul Work</Typography>
-                <Typography variant="h2">
+                <Typography variant="subtitle1" sx={{color: theme.palette.primary.orange}}>How Junk Booking Pro Work</Typography>
+                <Typography variant="h2" sx={{color: theme.palette.primary.green}}>
                   Solving your waste management woes is as simple as 1,2,3!
                 </Typography>
               </Stack>
@@ -351,7 +377,7 @@ function LandingPage() {
                   </TimelineSeparator>
                   <TimelineContent>
                     <Stack direction="row">
-                      <Typography variant="subtitle1" width="80%">
+                      <Typography variant="subtitle1" width="80%" sx={{color: theme.palette.primary.white}}>
                         Enter your ZIP code,
                         <strong>
                           {" "}
@@ -360,7 +386,7 @@ function LandingPage() {
                       </Typography>
                       <Typography
                         variant="h2"
-                        color={theme.palette.primary.lightest}
+                        color={theme.palette.primary.orange}
                       >
                         01
                       </Typography>
@@ -375,12 +401,12 @@ function LandingPage() {
                   </TimelineSeparator>
                   <TimelineContent>
                     <Stack direction="row">
-                      <Typography variant="subtitle1" width="80%">
+                      <Typography variant="subtitle1" width="80%" sx={{color: theme.palette.primary.white}}>
                         Get<strong> an instant, upfront</strong> quote
                       </Typography>
                       <Typography
                         variant="h2"
-                        color={theme.palette.primary.lightest}
+                        color={theme.palette.primary.orange}
                       >
                         02
                       </Typography>
@@ -394,12 +420,12 @@ function LandingPage() {
                   </TimelineSeparator>
                   <TimelineContent>
                     <Stack direction="row">
-                      <Typography variant="subtitle1" width="80%">
+                      <Typography variant="subtitle1" width="80%" sx={{color: theme.palette.primary.white}}>
                         Make a booking<strong> in seconds</strong>
                       </Typography>
                       <Typography
                         variant="h2"
-                        color={theme.palette.primary.lightest}
+                        color={theme.palette.primary.orange}
                       >
                         03
                       </Typography>
@@ -408,18 +434,15 @@ function LandingPage() {
                 </TimelineItem>
               </Timeline>
               <Stack spacing={3}>
-                <Typography variant="h3">It's that easy!</Typography>
-                <Typography variant="subtitle2">
+                <Typography variant="h3" sx={{color: theme.palette.primary.orange}}>It's that easy!</Typography>
+                <Typography variant="subtitle2" sx={{color: theme.palette.primary.white}}>
                   Once you've made your booking, we'll provide you with the
                   contact information of your reliable waste management
                   provider. If you have any questions or want to make a change,
                   you can easily contact us directly by SMS, call or email.
                 </Typography>
               </Stack>
-              <Button
-                sx={{ mt: 3 }}
-                href="/booking"
-              >
+              <Button sx={{ mt: 3, backgroundColor:theme.palette.primary.green, "&:hover":{backgroundColor:"white"} }} href="/booking">
                 Try it Now!
               </Button>
             </Box>
@@ -454,11 +477,11 @@ function LandingPage() {
                   </span>
                 ))}
               </Box>
-              <Typography variant="subtitle2">
+              <Typography variant="subtitle2" sx={{color: theme.palette.primary.white}}>
                 The work was perfect. And so was the personality of the workers.
                 An A+ experience.
               </Typography>
-              <Typography variant="subtitle1">Guest Customer</Typography>
+              <Typography variant="subtitle1" sx={{color: theme.palette.primary.orange}}>Guest Customer</Typography>
             </Stack>
             {/* Review 2 */}
             <Stack
@@ -476,11 +499,11 @@ function LandingPage() {
                   </span>
                 ))}
               </Box>
-              <Typography variant="subtitle2">
+              <Typography variant="subtitle2" sx={{color: theme.palette.primary.white}}>
                 The work was perfect. And so was the personality of the workers.
                 An A+ experience.
               </Typography>
-              <Typography variant="subtitle1">Guest Customer</Typography>
+              <Typography variant="subtitle1" sx={{color: theme.palette.primary.orange}}>Guest Customer</Typography>
             </Stack>
             {/* Review 3 */}
             <Stack
@@ -498,11 +521,11 @@ function LandingPage() {
                   </span>
                 ))}
               </Box>
-              <Typography variant="subtitle2">
+              <Typography variant="subtitle2" sx={{color: theme.palette.primary.white}}> 
                 The work was perfect. And so was the personality of the workers.
                 An A+ experience.
               </Typography>
-              <Typography variant="subtitle1">Guest Customer</Typography>
+              <Typography variant="subtitle1" sx={{color: theme.palette.primary.orange}}>Guest Customer</Typography>
             </Stack>
           </Stack>
         </Container>
@@ -531,8 +554,8 @@ function LandingPage() {
           >
             <Grid item xs={12} sm={6}>
               <Stack spacing={3}>
-                <Typography variant="subtitle1">Let's Get Started</Typography>
-                <Typography variant="h2">
+                <Typography variant="subtitle1" sx={{color: theme.palette.primary.orange}}>Let's Get Started</Typography>
+                <Typography variant="h2" sx={{color: theme.palette.primary.green}}>
                   Radically Simplified Waste Management
                 </Typography>
               </Stack>
@@ -546,76 +569,74 @@ function LandingPage() {
               alignItems="center"
             >
               <Stack spacing={1}>
-                <Button href="/booking">
-                  Book Now
-                </Button>
+                <Button href="/booking">Book Now</Button>
                 <Button>Chat With Us</Button>
               </Stack>
             </Grid>
           </Grid>
         </Container>
-        <Divider />
+        <Divider  color={theme.palette.primary.dark} />
         <Container
           sx={{
             py: { xs: 4, sm: 8, md: 12 },
           }}
         >
-          <Grid container spacing={3}>
+          <Grid container spacing={3} sx={{display:"flex", alignItems:"baseline"}}>
             <Grid item xs={12} sm={12} md={4}>
               <Stack spacing={4}>
                 <img
-                  src="logo.webp"
+                  src="logo.png"
                   alt="logo"
                   className="filtered-image"
                   width="50%"
                 />
                 <Stack spacing={2} width="66.66%">
-                  <Typography variant="subtitle1">Address</Typography>
-                  <Typography variant="body1">
+                  <Typography variant="subtitle1" sx={{color: theme.palette.primary.green}}>Address</Typography>
+                  <Typography variant="body1" sx={{color: theme.palette.primary.white}}>
                     2261 Market Street, #4061 San Francisco, CA 94114
                   </Typography>
                 </Stack>
               </Stack>
             </Grid>
             <Grid item xs={6} sm={3} md={2}>
-              <Stack spacing={4}>
-                <Typography variant="subtitle1">Business</Typography>
-                <Typography variant="body1">Lorem Ipsum 1</Typography>
-                <Typography variant="body1">Lorem Ipsum 2</Typography>
-                <Typography variant="body1">Lorem Ipsum 3</Typography>
+              <Stack spacing={2}>
+                <Typography variant="subtitle1" sx={{color: theme.palette.primary.orange}}>Business</Typography>
+                <Typography variant="body1" sx={{color: theme.palette.primary.white}}>Lorem Ipsum 1</Typography>
+                <Typography variant="body1" sx={{color: theme.palette.primary.white}}>Lorem Ipsum 2</Typography>
+                <Typography variant="body1" sx={{color: theme.palette.primary.white}}>Lorem Ipsum 3</Typography>
               </Stack>
             </Grid>
             <Grid item xs={6} sm={3} md={2}>
-              <Stack spacing={4}>
-                <Typography variant="subtitle1">About Us</Typography>
-                <Typography variant="body1">Lorem Ipsum 1</Typography>
-                <Typography variant="body1">Lorem Ipsum 2</Typography>
-                <Typography variant="body1">Lorem Ipsum 3</Typography>
+              <Stack spacing={2}>
+                <Typography variant="subtitle1" sx={{color: theme.palette.primary.orange}}>About Us</Typography>
+                <Typography variant="body1" sx={{color: theme.palette.primary.white}}>Lorem Ipsum 1</Typography>
+                <Typography variant="body1" sx={{color: theme.palette.primary.white}}>Lorem Ipsum 2</Typography>
+                <Typography variant="body1" sx={{color: theme.palette.primary.white}}>Lorem Ipsum 3</Typography>
               </Stack>
             </Grid>
             <Grid item xs={6} sm={3} md={2}>
-              <Stack spacing={4}>
-                <Typography variant="subtitle1">Providers</Typography>
-                <Typography variant="body1">Lorem Ipsum 1</Typography>
-                <Typography variant="body1">Lorem Ipsum 2</Typography>
-                <Typography variant="body1">Lorem Ipsum 3</Typography>
+              <Stack spacing={2}>
+                <Typography variant="subtitle1" sx={{color: theme.palette.primary.orange}}>Providers</Typography>
+                <Typography variant="body1" sx={{color: theme.palette.primary.white}}>Lorem Ipsum 1</Typography>
+                <Typography variant="body1" sx={{color: theme.palette.primary.white}}>Lorem Ipsum 2</Typography>
+                <Typography variant="body1" sx={{color: theme.palette.primary.white}}>Lorem Ipsum 3</Typography>
               </Stack>
             </Grid>
             <Grid item xs={6} sm={3} md={2}>
-              <Stack spacing={4}>
-                <Typography variant="subtitle1">Support</Typography>
-                <Typography variant="body1">Lorem Ipsum 1</Typography>
-                <Typography variant="body1">Lorem Ipsum 2</Typography>
-                <Typography variant="body1">Lorem Ipsum 3</Typography>
+              <Stack spacing={2}>
+                <Typography variant="subtitle1" sx={{color: theme.palette.primary.orange}}>Support</Typography>
+                <Typography variant="body1" sx={{color: theme.palette.primary.white}}>Lorem Ipsum 1</Typography>
+                <Typography variant="body1" sx={{color: theme.palette.primary.white}}>Lorem Ipsum 2</Typography>
+                <Typography variant="body1" sx={{color: theme.palette.primary.white}}>Lorem Ipsum 3</Typography>
               </Stack>
             </Grid>
           </Grid>
         </Container>
         <Typography
           variant="body1"
-          sx={{ p: {xs:2, sm:4}, textAlign: { xs: "left", sm: "center" } }}
+          sx={{ p: { xs: 2, sm: 4 }, textAlign: { xs: "left", sm: "center" }, color: theme.palette.primary.white }}
         >
-          © 2024 Amhaul. All rights reserved.
+          © 2024 Junk Booking Pro. All rights reserved.
         </Typography>
       </Box>
     </Box>

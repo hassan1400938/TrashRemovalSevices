@@ -13,6 +13,8 @@ import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import HelpIcon from "@mui/icons-material/Help";
 import MailIcon from "@mui/icons-material/Mail";
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+
 import { useTheme } from "@emotion/react";
 
 import { Link } from "react-router-dom";
@@ -28,7 +30,7 @@ const menuItems = [
   },
   {
     text: "Booking",
-    icon: <MailIcon />,
+    icon: <EventAvailableIcon />,
     link: "/booking",
   },
 ];
@@ -93,7 +95,7 @@ export default function MenuDrawer() {
           aria-controls="menu-appbar"
           aria-haspopup="true"
           onClick={toggleDrawer("right", true)}
-          color="inherit">
+          color={theme.palette.primary.main}>
           <MenuIcon />
         </IconButton>
         <Drawer

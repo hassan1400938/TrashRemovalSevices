@@ -58,7 +58,7 @@ export default function Booking() {
             <Box sx={{ p: { xs: 2, sm: 2, md: 3, lg: 5 } }}>
               <Hidden mdDown>
                 <Typography variant="h1" my={3}>
-                  Amphaul Booking
+                  Junk Booking Pro
                 </Typography>
               </Hidden>
               <Grid container spacing={2}>

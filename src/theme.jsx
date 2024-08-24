@@ -1,69 +1,79 @@
 import { createTheme, alpha, getContrastRatio } from "@mui/material/styles";
 
-const [gambogeBase, gambogeLightest, gambogeLight, gambogeBaseD, gambogeDark] =
-  ["#E8A901", "#fcf6e5", "#f4db95", "#E8A901", "#a27600"];
-// const gambogeMain = alpha(gambogeBase, 0.8);
+const [ blueLightest, blueLight, blueBase, blueBaseD, blueDark, themeGreen, themeOrange] =
+  [ "#e6eaec", "#cdd5da","#092E47", "#214259", "#01090e", "#A8B66B", '#CB773B'];
+// const blueMain = alpha(blueBase, 0.8);
 
 const theme = createTheme({
   palette: {
     primary: {
-      lightest: gambogeLightest,
-      light: gambogeLight,
-      main: gambogeBase,
-      dark: gambogeBaseD,
+      lightest: blueLightest,
+      light: blueLight,
+      main: blueBase,
+      dark: blueBaseD,
       white: "#fff",
+      green: themeGreen,
+      orange: themeOrange,
       contrastText:
-        getContrastRatio(gambogeBase, "#fff") > 4.5 ? "#fff" : "#000",
+        getContrastRatio(blueBase, "#fff") > 4.5 ? "#fff" : "#000",
     },
     secondary: {
-      main: "#f50057", // Change the secondary color
+      main: "#A8B66B", // Change the secondary color
     },
   },
   typography: {
     // fontFamily: ["Montserrat", "sans-serif"].join(","),
-    fontFamily: "Nunito Sans", //400, 700, 900, 1000
+    fontFamily: "Nunito Sans", //400, 700, 900, 
     h1: {
       fontSize: "3em",
       // fontSize: { xs: "0.2em", sm: "0.2em", md: "70px", lg: "5em" },
       fontWeight: 1000,
+      color: blueBase
     },
     h2: {
       fontSize: "2.5em",
       // fontSize: { xs: "0.1em", sm: "1.75em" },
       fontWeight: 1000,
+      color: blueBase
     },
     h3: {
       fontSize: "1.5em",
       fontWeight: 900,
+      color: blueBase
     },
     h4: {
       // fontSize: "1.2em",
       fontWeight: 700,
+      color: blueBase
     },
     body1: {
       fontSize: "1em",
       fontWeight: 400,
+      color: blueBase
     },
     body2: {
       fontSize: "0.8em",
       fontWeight: 700, //Regular
+      color: blueBase
     },
     subtitle1: {
       fontSize: "1.2em",
       fontWeight: 600,
       lineHeight: "1.2em",
+      color: blueBase
     },
     subtitle2: {
       fontSize: "1.2em",
       fontWeight: 400,
       lineHeight: "1.2em",
+      color: blueBase
     },
     // fontSize: 16, // Change the default font size
   },
 
   site: {
-    name: "Amphaul",
-    logo: "logo.webp",
+    name: "junk Booking Pro",
+    logo: "logo2.png",
   },
 
   components: {
@@ -83,43 +93,45 @@ const theme = createTheme({
     MuiPickersToolbar: {
       styleOverrides: {
         root: {
-          color: gambogeBaseD,
+          color: blueBaseD,
           borderRadius: 0,
           borderWidth: 0,
           borderColor: "green",
           border: "0px solid",
-          backgroundColor: gambogeLight,
+          backgroundColor: blueLight,
         },
       },
     },
     MuiButton: {
       styleOverrides: {
         root: {
+          padding: "4px 16px",
           boxShadow: "none",
-          // color: gambogeDark,
+          // color: blueDark,
+          // backgroundColor:themeOrange,
           fontSize: "1.2em",
-          fontWeight: 900,
+          fontWeight: "bold",
           textTransform: "none",
           "&:hover": {
             color: "white",
           },
         },
         contained: {
-          padding: "16px 42px",
+          // padding: "4px 16px",
         },
         outlined: {
-          color: gambogeBaseD,
-          borderColor: gambogeBase,
+          color: blueBaseD,
+          borderColor: blueBase,
           "&:hover": {
-            color: gambogeDark, // Change the text color on hover for outlined buttons
+            color: blueDark, // Change the text color on hover for outlined buttons
           },
         },
         text: {
           fontWeight: 700,
-          color: gambogeBaseD,
-          backgroundColor: gambogeLightest,
+          color: blueBaseD,
+          backgroundColor: blueLightest,
           "&:hover": {
-            color: gambogeDark, // Change the text color on hover for outlined buttons
+            color: blueDark, // Change the text color on hover for outlined buttons
           },
         },
       },

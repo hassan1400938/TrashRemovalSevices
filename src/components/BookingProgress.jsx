@@ -30,7 +30,6 @@ export default function BookingProgress({ formData }) {
     <Box
       sx={{
         width: "100%",
-        position: "-webkit-sticky",
         position: "sticky",
         top: 0,
       }}>

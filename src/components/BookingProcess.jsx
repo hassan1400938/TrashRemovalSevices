@@ -105,7 +105,7 @@ export default function BookingProcess({ formData, updateFormData }) {
         >
           {expanded !== "panel-services" && (
             <>
-              <Typography variant="h4" sx={{ width: "50%", flexShrink: 0 }}>
+              <Typography variant="h5" sx={{ width: "50%", flexShrink: 0 }}>
                 What are you looking for?
               </Typography>
               <Typography variant="body1">
@@ -137,7 +137,7 @@ export default function BookingProcess({ formData, updateFormData }) {
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
-          <Typography variant="h4" sx={{ width: "50%", flexShrink: 0 }}>
+          <Typography variant="h5" sx={{ width: "50%", flexShrink: 0 }}>
             Date & Time
           </Typography>
           <Typography variant="body1">
@@ -168,7 +168,7 @@ export default function BookingProcess({ formData, updateFormData }) {
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
-          <Typography variant="h4" sx={{ width: "50%", flexShrink: 0 }}>
+          <Typography variant="h5" sx={{ width: "50%", flexShrink: 0 }}>
             Task Description
           </Typography>
           <Typography variant="body1">
@@ -202,7 +202,7 @@ export default function BookingProcess({ formData, updateFormData }) {
           aria-controls="panel4bh-content"
           id="panel4bh-header"
         >
-          <Typography variant="h4" sx={{ width: "50%", flexShrink: 0 }}>
+          <Typography variant="h5" sx={{ width: "50%", flexShrink: 0 }}>
             Frequency
           </Typography>
           <Typography variant="boady1" sx={{ color: "text.secondary" }}>
@@ -229,7 +229,7 @@ export default function BookingProcess({ formData, updateFormData }) {
           aria-controls="panel5bh-content"
           id="panel5bh-header"
         >
-          <Typography variant="h4" sx={{ width: "50%", flexShrink: 0 }}>
+          <Typography variant="h5" sx={{ width: "50%", flexShrink: 0 }}>
             Review your order
           </Typography>
           <Typography variant="body1">
@@ -267,7 +267,7 @@ export default function BookingProcess({ formData, updateFormData }) {
         disabled={isFormDisabled.pre_payment}
       >
         <AccordionSummary aria-controls="panel6bh-content" id="panel6bh-header">
-          <Typography variant="h4" sx={{ width: "50%", flexShrink: 0 }}>
+          <Typography variant="h5" sx={{ width: "50%", flexShrink: 0 }}>
             Payment
           </Typography>
         </AccordionSummary>

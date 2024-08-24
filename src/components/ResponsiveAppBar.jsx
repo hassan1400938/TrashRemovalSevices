@@ -20,16 +20,17 @@ function ResponsiveAppBar() {
           <img
             alt={theme.site.name}
             src={`/${theme.site.logo}`}
-            width="130px"
+            width="280px"
             sx={{ flexGrow: 1 }}
             />
             </a>
           {/* Menu */}
-          <Box sx={{ display: "flex", ml: "auto" }}>
+          <Box sx={{ display: "flex", ml: "auto", gap:5}}>
             {/* <Stack direction="row" spacing={2} mr={3}>
               <Button>Login</Button>
               <Button variant="contained">Book Now</Button>
             </Stack> */}
+            <Button href="/booking" variant="contained" sx={{padding:"0px 50px"}}> Book Now</Button>
             <MenuDrawer />
           </Box>
         </Toolbar>
