@@ -30,7 +30,7 @@ function ResponsiveAppBar() {
               <Button>Login</Button>
               <Button variant="contained">Book Now</Button>
             </Stack> */}
-            <Button href="/booking" variant="contained" sx={{padding:"0px 50px"}}> Book Now</Button>
+            <Button href="/booking" variant="contained" sx={{display:{xs:"none", sm:"none", md:"inline-flex"}, padding:"0px 50px"}}>Book Now</Button>
             <MenuDrawer />
           </Box>
         </Toolbar>
